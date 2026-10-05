@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Grid system</h1>
+        <p class="lead">Bootstrap's twelve-column flexbox grid: <code>Container</code>, <code>Row</code> and <code>Column</code>, with sizes, offsets and order per breakpoint.</p>
+        <d:Example ui:field="equal" heading="Equal-width columns" description="Columns without a number share the row equally: `XS_DEFAULT` writes `col`."/>
+        <d:Example ui:field="responsive" heading="Sizes per breakpoint" description="List several sizes, separated by spaces: these columns stack on phones and sit side by side from `md` up."/>
+        <d:Example ui:field="rowCols" heading="Row columns" description="`RowCols` sets how many columns fit in a row, whatever the number of children."/>
+        <d:Example ui:field="offsetOrder" heading="Offsets and order" description="`offset` pushes a column to the right; `order` changes where it shows, not where it is in the code."/>
+        <d:Example ui:field="alignment" heading="Alignment" description="`contentJustifyAlign` and `contentVerticalAlign` on a `Row` align its columns horizontally and vertically."/>
+        <d:Example ui:field="containers" heading="Containers" description="A `Container` is fixed-width per breakpoint by default; `FLUID` takes the full width and `MD` is full width until `md`."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

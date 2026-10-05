@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Checks, radios and other inputs</h1>
+        <p class="lead">Checkboxes, radios, ranges, file and color inputs, and multiple selects.</p>
+        <d:Example ui:field="checks" heading="Checkboxes" description="`value=&quot;true&quot;` checks the box; `reverse` puts the box after the label."/>
+        <d:Example ui:field="radios" heading="Radios" description="Radios with the same `name` form a group: checking one unchecks the others."/>
+        <d:Example ui:field="inline" heading="Inline" description="`InlineCheckBox` and `InlineRadio` sit on one line."/>
+        <d:Example ui:field="range" heading="Range" description="`InputRange` is a native slider; `min` and `max` bound it."/>
+        <d:Example ui:field="fileColor" heading="File and color" description="`InputFile` picks files; `InputColor` is the browser's color picker."/>
+        <d:Example ui:field="multiple" heading="Multiple select" description="`multipleSelect` lets the user pick several options; `visibleItemCount` sets the height."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

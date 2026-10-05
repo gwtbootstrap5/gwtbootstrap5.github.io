@@ -99,3 +99,17 @@
   color: var(--bs-secondary-color);
   font-style: italic;
 }
+
+/* Grid examples: make the columns and containers visible ------------------ */
+
+.demo-live [class*="container"] > .row > *,
+.demo-live > div > [class*="container"] {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: rgba(var(--bs-primary-rgb), .08);
+  border: var(--bs-border-width) solid rgba(var(--bs-primary-rgb), .25);
+}
+
+.demo-live .badge + .badge {
+  margin-left: .25rem;
+}

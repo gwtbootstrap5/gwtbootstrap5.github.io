@@ -25,6 +25,7 @@ import org.gwtbootstrap5.client.ui.Collapse;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
@@ -77,8 +78,11 @@ public class Example extends Composite {
         heading.setInnerText(text);
     }
 
-    public void setDescription(final String html) {
-        description.setInnerHTML(html);
+    /**
+     * Sets the description; text between backticks shows as code.
+     */
+    public void setDescription(final String text) {
+        description.setInnerHTML(SafeHtmlUtils.htmlEscape(text).replaceAll("`([^`]+)`", "<code>$1</code>"));
     }
 
     /**

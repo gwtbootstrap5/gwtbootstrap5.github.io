@@ -20,7 +20,10 @@ package org.gwtbootstrap5.demo.client.nav;
  * ==========================LICENSE_END=================================
  */
 
+import org.gwtbootstrap5.demo.client.pages.content.ContentPages;
+import org.gwtbootstrap5.demo.client.pages.forms.FormsPages;
 import org.gwtbootstrap5.demo.client.pages.general.GeneralPages;
+import org.gwtbootstrap5.demo.client.pages.layout.LayoutPages;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
@@ -38,6 +41,39 @@ public enum Section {
                 @Override
                 public void onSuccess() {
                     callback.onPage(GeneralPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    LAYOUT("Layout") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(LayoutPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(LayoutPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    CONTENT("Content") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(ContentPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(ContentPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    FORMS("Forms") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(FormsPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(FormsPages.create(page.getToken()));
                 }
             });
         }

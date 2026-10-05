@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Responsive utilities</h1>
+        <p class="lead">Show or hide a widget per breakpoint with <code>visibleOn</code> and <code>hiddenOn</code>, which write Bootstrap's <code>d-*-block</code> and <code>d-*-none</code> classes.</p>
+        <d:Example ui:field="hidden" heading="Hide from a breakpoint up" description="`hiddenOn=&quot;MD&quot;` writes `d-md-none`: the widget hides from that breakpoint up. Resize the window to see the badges change."/>
+        <d:Example ui:field="visible" heading="Show from a breakpoint up" description="Hide the widget everywhere with `hiddenOn=&quot;XS&quot;` and show it again from a breakpoint up with `visibleOn`."/>
+        <d:Example ui:field="print" heading="Print" description="`PRINT` controls what shows when the page is printed."/>
+    </g:HTMLPanel>
+</ui:UiBinder>
