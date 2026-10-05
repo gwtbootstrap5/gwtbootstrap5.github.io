@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui">
+    <g:HTMLPanel>
+        <b:Navbar position="STICKY_TOP" addStyleNames="bg-body-tertiary border-bottom demo-navbar">
+            <g:HTMLPanel styleName="container-fluid">
+                <button type="button" class="btn btn-link px-1 me-2 d-md-none text-body"
+                        data-bs-toggle="offcanvas" data-bs-target="#demo-sidebar" aria-controls="demo-sidebar"
+                        aria-label="Menu">
+                    <i class="bi bi-list fs-4"/>
+                </button>
+                <a class="navbar-brand fw-semibold" href="#home">
+                    <i class="bi bi-bootstrap-fill text-primary me-1"/>GwtBootstrap5
+                    <span class="badge text-bg-primary align-middle ms-1 fw-normal">0.2.0</span>
+                </a>
+                <ul class="navbar-nav flex-row ms-auto align-items-center gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="https://javadoc.io/doc/io.github.gwtbootstrap5/gwtbootstrap5"
+                           target="_blank" rel="noopener" title="Javadoc">
+                            <i class="bi bi-journal-code"/>
+                            <span class="d-none d-lg-inline ms-1">Javadoc</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="https://github.com/gwtbootstrap5/gwtbootstrap5-parent"
+                           target="_blank" rel="noopener" title="GitHub">
+                            <i class="bi bi-github"/>
+                            <span class="d-none d-lg-inline ms-1">GitHub</span>
+                        </a>
+                    </li>
+                    <b:NavbarDropdown>
+                        <b:NavbarDropdownButton ui:field="colorModeButton" ariaLabel="Color mode"
+                                                addStyleNames="px-2 btn-link border-0"/>
+                        <b:DropDownMenu alignment="END">
+                            <b:AnchorListItem ui:field="light" text="Light"/>
+                            <b:AnchorListItem ui:field="dark" text="Dark"/>
+                            <b:AnchorListItem ui:field="auto" text="Auto"/>
+                        </b:DropDownMenu>
+                    </b:NavbarDropdown>
+                </ul>
+            </g:HTMLPanel>
+        </b:Navbar>
+        <div class="container-fluid">
+            <div class="row">
+                <b:Offcanvas ui:field="sidebar" responsive="MD" placement="START"
+                             addStyleNames="col-md-3 col-xl-2 demo-sidebar">
+                    <b:OffcanvasHeader title="GwtBootstrap5"/>
+                    <b:OffcanvasBody>
+                        <g:FlowPanel ui:field="menu" styleName="demo-menu w-100"/>
+                    </b:OffcanvasBody>
+                </b:Offcanvas>
+                <main class="col-md-9 col-xl-10 px-md-5 py-4 demo-content">
+                    <g:SimplePanel ui:field="content"/>
+                    <footer class="border-top mt-5 pt-3 small text-body-secondary">
+                        GwtBootstrap5 is released under the Apache License 2.0. This demo is based on the
+                        <a href="https://github.com/gwtbootstrap3/gwtbootstrap3-demo">GwtBootstrap3 demo</a>.
+                    </footer>
+                </main>
+            </div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

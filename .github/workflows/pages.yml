@@ -1,0 +1,71 @@
+name: Build and publish the demo
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # The demo is a module of gwtbootstrap5-parent and builds against master of core and extras
+      - name: Check out gwtbootstrap5-parent
+        uses: actions/checkout@v4
+        with:
+          repository: gwtbootstrap5/gwtbootstrap5-parent
+          path: parent
+      - name: Check out gwtbootstrap5
+        uses: actions/checkout@v4
+        with:
+          repository: gwtbootstrap5/gwtbootstrap5
+          path: parent/gwtbootstrap5
+      - name: Check out gwtbootstrap5-extras
+        uses: actions/checkout@v4
+        with:
+          repository: gwtbootstrap5/gwtbootstrap5-extras
+          path: parent/gwtbootstrap5-extras
+      - name: Check out the demo
+        uses: actions/checkout@v4
+        with:
+          path: parent/gwtbootstrap5-demo
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: maven
+
+      - name: Build
+        working-directory: parent
+        run: mvn -B -ntp install -Ddependency-check.skip=true
+
+      - name: Collect the site
+        run: |
+          mkdir _site
+          cp -r parent/gwtbootstrap5-demo/target/gwtbootstrap5-demo-*/. _site/
+          rm -rf _site/WEB-INF _site/META-INF
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

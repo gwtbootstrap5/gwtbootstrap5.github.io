@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.gwtbootstrap5</groupId>
+        <artifactId>gwtbootstrap5-parent</artifactId>
+        <version>0.2.0</version>
+    </parent>
+
+    <artifactId>gwtbootstrap5-demo</artifactId>
+    <name>GwtBootstrap5 Demo</name>
+    <description>Live demo of every widget of GwtBootstrap5 and GwtBootstrap5 Extras</description>
+    <url>https://gwtbootstrap5.github.io/</url>
+    <packaging>war</packaging>
+
+    <scm>
+        <connection>scm:git:git@github.com:gwtbootstrap5/gwtbootstrap5.github.io.git</connection>
+        <developerConnection>scm:git:git@github.com:gwtbootstrap5/gwtbootstrap5.github.io.git</developerConnection>
+        <url>https://github.com/gwtbootstrap5/gwtbootstrap5.github.io</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <webapp.directory>${project.build.directory}/${project.build.finalName}</webapp.directory>
+        <!-- The demo is a web site, not a library: never published to Maven Central -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <maven.source.skip>true</maven.source.skip>
+        <gpg.skip>true</gpg.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gwtbootstrap5</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gwtbootstrap5-extras</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <moduleName>org.gwtbootstrap5.demo.Demo</moduleName>
+                    <moduleShortName>demo</moduleShortName>
+                    <failOnError>true</failOnError>
+                    <compilerArgs>
+                        <arg>-strict</arg>
+                    </compilerArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

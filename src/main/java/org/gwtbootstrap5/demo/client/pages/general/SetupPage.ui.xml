@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Setup</h1>
+        <p class="lead">Add the dependency, inherit the GWT module, and use the widgets from Java or UiBinder.</p>
+
+        <h2 class="h4 mt-5">1. Add the dependency</h2>
+        <p>GwtBootstrap5 is on Maven Central. It needs GWT 2.13 and Java 17.</p>
+        <d:CodeBlock ui:field="dependency" language="xml"/>
+
+        <h2 class="h4 mt-5">2. Inherit the GWT module</h2>
+        <d:CodeBlock ui:field="inherits" language="xml"/>
+        <p>Pick the module by where Bootstrap's files come from:</p>
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr><th>Module</th><th>Bootstrap 5.3.8, Popper and Bootstrap Icons</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>org.gwtbootstrap5.GwtBootstrap5</code></td>
+                        <td>Bundled in the jar and served with your app. The usual choice.</td>
+                    </tr>
+                    <tr>
+                        <td><code>org.gwtbootstrap5.GwtBootstrap5URL</code></td>
+                        <td>Loaded from the jsDelivr CDN.</td>
+                    </tr>
+                    <tr>
+                        <td><code>org.gwtbootstrap5.GwtBootstrap5NoResources</code></td>
+                        <td>Not loaded: your host page loads Bootstrap (and Popper, if an extra needs it) itself.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>If the page already has Bootstrap 5, GwtBootstrap5 doesn't load it again.</p>
+
+        <h2 class="h4 mt-5">3. Write the host page</h2>
+        <p>Bootstrap 5 needs the HTML5 doctype and the viewport meta tag for its responsive layout.</p>
+        <d:CodeBlock ui:field="host" language="html"/>
+
+        <h2 class="h4 mt-5">4. Use the widgets in UiBinder</h2>
+        <p>
+            Widgets are in <code>org.gwtbootstrap5.client.ui</code> and plain HTML elements as widgets in
+            <code>org.gwtbootstrap5.client.ui.html</code>. The code shown in this demo uses the <code>b</code>,
+            <code>b.html</code> and <code>g</code> prefixes below.
+        </p>
+        <d:CodeBlock ui:field="uiBinder" language="xml"/>
+
+        <h2 class="h4 mt-5">5. Add the extras you need</h2>
+        <p>
+            The extras are a separate artifact, with one GWT module per extra. Most have <code>URL</code> and
+            <code>NoResources</code> variants like the core module. The Extras pages of this demo show which module
+            each one needs.
+        </p>
+        <d:CodeBlock ui:field="extras" language="xml"/>
+
+        <h2 class="h4 mt-5">Upgrading from 0.1.x</h2>
+        <p>
+            0.2.0 changes the Maven <code>groupId</code> and several APIs. See
+            <a href="https://github.com/gwtbootstrap5/gwtbootstrap5-parent/blob/master/UPGRADING.md">UPGRADING.md</a>
+            for what to change.
+        </p>
+    </g:HTMLPanel>
+</ui:UiBinder>
