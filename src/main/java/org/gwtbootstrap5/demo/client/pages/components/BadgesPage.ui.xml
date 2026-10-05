@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Badges</h1>
+        <p class="lead">Small counts and labels: <code>Badge</code>, which replaces Bootstrap 3's <code>Label</code>.</p>
+        <d:Example ui:field="headings" heading="In headings" description="A badge scales with its parent&#x27;s font size. Headings, buttons and list items take a `badgeText`."/>
+        <d:Example ui:field="types" heading="Types" description="`type` takes a `BadgeType`, which writes Bootstrap&#x27;s `text-bg-*` classes so the text keeps its contrast."/>
+        <d:Example ui:field="buttons" heading="In buttons" description="On buttons, `badgePosition` puts the badge before or after the text."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

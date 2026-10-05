@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
+    <g:HTMLPanel>
+        <b:Carousel b:id="carousel-basic">
+            <b:CarouselIndicators>
+                <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="0" active="true"/>
+                <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="1"/>
+                <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="2"/>
+            </b:CarouselIndicators>
+            <b:CarouselInner>
+                <b:CarouselSlide active="true">
+                    <b:Image url="images/landscape.svg" altText="First slide" addStyleNames="d-block w-100"/>
+                    <b:CarouselCaption addStyleNames="d-none d-md-block">
+                        <b:Heading size="H5" text="First slide"/>
+                    </b:CarouselCaption>
+                </b:CarouselSlide>
+                <b:CarouselSlide>
+                    <b:Image url="images/landscape.svg" altText="Second slide" addStyleNames="d-block w-100"/>
+                    <b:CarouselCaption addStyleNames="d-none d-md-block">
+                        <b:Heading size="H5" text="Second slide"/>
+                    </b:CarouselCaption>
+                </b:CarouselSlide>
+                <b:CarouselSlide>
+                    <b:Image url="images/landscape.svg" altText="Third slide" addStyleNames="d-block w-100"/>
+                    <b:CarouselCaption addStyleNames="d-none d-md-block">
+                        <b:Heading size="H5" text="Third slide"/>
+                    </b:CarouselCaption>
+                </b:CarouselSlide>
+            </b:CarouselInner>
+            <b:CarouselControl prev="true" href="#carousel-basic" text="Previous"/>
+            <b:CarouselControl next="true" href="#carousel-basic" text="Next"/>
+        </b:Carousel>
+    </g:HTMLPanel>
+</ui:UiBinder>

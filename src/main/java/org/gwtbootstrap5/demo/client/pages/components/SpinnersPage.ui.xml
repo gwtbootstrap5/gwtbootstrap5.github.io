@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Spinners</h1>
+        <p class="lead">Loading indicators: <code>Spinner</code> with a <code>BORDER</code> or <code>GROW</code> animation.</p>
+        <d:Example ui:field="types" heading="Border and grow" description="The constructor takes the `SpinnerType` and the text read by screen readers. `emphasis` colors it."/>
+        <d:Example ui:field="small" heading="Small, and in buttons" description="`small` shrinks the spinner, which fits a button that is waiting."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

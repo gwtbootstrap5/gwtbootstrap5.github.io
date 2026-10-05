@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Offcanvas</h1>
+        <p class="lead">A panel that slides in from an edge of the window: <code>Offcanvas</code>.</p>
+        <d:Example ui:field="basic" heading="Basic" description="A button with `dataToggle=&quot;OFFCANVAS&quot;` and a `dataTarget` opens it. The `OffcanvasHeader`&#x27;s `title` labels the panel, and its close button closes it."/>
+        <d:Example ui:field="fromJava" heading="Placement, from Java" description="`placement` picks the edge. `show()` opens the panel (and adds it to the page if it isn&#x27;t yet), and `scroll=&quot;true&quot;` with `backdrop=&quot;FALSE&quot;` keeps the page usable while it is open."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

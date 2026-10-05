@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Button groups</h1>
+        <p class="lead">Buttons side by side: <code>ButtonGroup</code>, <code>VerticalButtonGroup</code> and <code>ButtonToolBar</code>, plus check and radio buttons.</p>
+        <d:Example ui:field="basic" heading="Basic" description="A `ButtonGroup` joins its buttons; `size` sizes them all."/>
+        <d:Example ui:field="toolbar" heading="Toolbar and vertical" description="A `ButtonToolBar` lines groups up; a `VerticalButtonGroup` stacks its buttons."/>
+        <d:Example ui:field="checks" heading="Check and radio buttons" description="`CheckBoxButton` and `RadioButton` look like buttons and keep their value: radios with the same `name` are exclusive."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

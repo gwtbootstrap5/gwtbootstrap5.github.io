@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Icons</h1>
+        <p class="lead">Core uses <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>: <code>Icon</code>, and the <code>icon</code> property of buttons, links and list items.</p>
+        <d:Example ui:field="basic" heading="Basic" description="`icon` takes the name of an `IconTypeBI` constant (`setType(IconTypeBI)` in Java). Icons are text, so color and size them like text: `emphasis`, or utilities such as `fs-2`."/>
+        <d:Example ui:field="widgets" heading="In other widgets" description="Buttons, links, nav items and headings take an `icon` too."/>
+        <d:Example ui:field="clicks" heading="Clickable icons" description="An `Icon` has `addClickHandler`; give it a role and a label so it is usable from the keyboard and by screen readers."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

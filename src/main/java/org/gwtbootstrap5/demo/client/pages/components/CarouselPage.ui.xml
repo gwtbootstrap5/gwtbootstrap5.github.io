@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Carousel</h1>
+        <p class="lead">A slideshow: <code>Carousel</code>, with slides, captions, indicators and controls.</p>
+        <d:Example ui:field="basic" heading="With indicators and controls" description="The indicators and the controls point at the carousel&#x27;s id. It cycles every five seconds and pauses on hover."/>
+        <d:Example ui:field="fromJava" heading="Fade, from Java" description="`fade` cross-fades the slides and `autoplay=&quot;false&quot;` stops it cycling by itself. `goToPrev()`, `goToNext()` and `jumpToSlide(int)` move it, and `addSlidHandler` runs after each slide."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

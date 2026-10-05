@@ -20,6 +20,7 @@ package org.gwtbootstrap5.demo.client.nav;
  * ==========================LICENSE_END=================================
  */
 
+import org.gwtbootstrap5.demo.client.pages.components.ComponentsPages;
 import org.gwtbootstrap5.demo.client.pages.content.ContentPages;
 import org.gwtbootstrap5.demo.client.pages.forms.FormsPages;
 import org.gwtbootstrap5.demo.client.pages.general.GeneralPages;
@@ -74,6 +75,17 @@ public enum Section {
                 @Override
                 public void onSuccess() {
                     callback.onPage(FormsPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    COMPONENTS("Components") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(ComponentsPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(ComponentsPages.create(page.getToken()));
                 }
             });
         }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
+    <g:HTMLPanel>
+        <b.html:Div addStyleNames="d-flex flex-wrap gap-2">
+            <b:Button type="PRIMARY" dataToggle="MODAL" dataTarget="#modal-centered" text="Centered and scrollable"/>
+            <b:Button type="PRIMARY" dataToggle="MODAL" dataTarget="#modal-large" text="Large, static backdrop"/>
+            <b:Button type="PRIMARY" dataToggle="MODAL" dataTarget="#modal-fullscreen" text="Full screen below md"/>
+        </b.html:Div>
+        <b:Modal b:id="modal-centered" title="Centered and scrollable" closable="true" fade="true" centered="true" scrollable="true">
+            <b:ModalBody>
+                <b.html:Paragraph>This dialog is centered. Its body scrolls when the content is taller than the window.</b.html:Paragraph>
+                <b.html:Paragraph height="900px">A tall paragraph, to make the body scroll.</b.html:Paragraph>
+                <b.html:Paragraph addStyleNames="mb-0">The end of the body.</b.html:Paragraph>
+            </b:ModalBody>
+        </b:Modal>
+        <b:Modal b:id="modal-large" title="Large modal" closable="true" fade="true" size="LARGE" dataBackdrop="STATIC">
+            <b:ModalBody>
+                <b.html:Paragraph addStyleNames="mb-0">Clicking outside doesn't close this modal; use the close button.</b.html:Paragraph>
+            </b:ModalBody>
+        </b:Modal>
+        <b:Modal b:id="modal-fullscreen" title="Full screen below md" closable="true" fade="true" fullscreen="MD_DOWN">
+            <b:ModalBody>
+                <b.html:Paragraph addStyleNames="mb-0">On a phone this modal takes the whole screen.</b.html:Paragraph>
+            </b:ModalBody>
+        </b:Modal>
+    </g:HTMLPanel>
+</ui:UiBinder>

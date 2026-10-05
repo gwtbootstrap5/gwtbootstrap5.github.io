@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Modal</h1>
+        <p class="lead">Dialogs on top of the page: <code>Modal</code>, with a header, body and footer.</p>
+        <d:Example ui:field="basic" heading="Basic" description="A button with `dataToggle=&quot;MODAL&quot;` and a `dataTarget` opens the modal; `title` and `closable` fill its header, and `dataDismiss=&quot;MODAL&quot;` closes it."/>
+        <d:Example ui:field="options" heading="Options" description="`centered` centers the dialog vertically, `scrollable` scrolls the body instead of the page, `size` and `fullscreen` change its size, and `dataBackdrop=&quot;STATIC&quot;` keeps it open on outside clicks."/>
+        <d:Example ui:field="fromJava" heading="From Java" description="`show()` and `hide()` open and close the modal; `addShownHandler` and `addHiddenHandler` run when it has opened or closed."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

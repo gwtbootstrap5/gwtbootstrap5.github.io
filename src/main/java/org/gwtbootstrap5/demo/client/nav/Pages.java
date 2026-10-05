@@ -52,6 +52,33 @@ public final class Pages {
         add(new Page(Section.FORMS, "forms/floating-labels", "Floating labels"));
         add(new Page(Section.FORMS, "forms/switch", "Switches"));
         add(new Page(Section.FORMS, "forms/validation", "Validation"));
+
+        add(new Page(Section.COMPONENTS, "components/accordion", "Accordion"));
+        add(new Page(Section.COMPONENTS, "components/alerts", "Alerts"));
+        add(new Page(Section.COMPONENTS, "components/badges", "Badges"));
+        add(new Page(Section.COMPONENTS, "components/breadcrumbs", "Breadcrumbs"));
+        add(new Page(Section.COMPONENTS, "components/buttons", "Buttons"));
+        add(new Page(Section.COMPONENTS, "components/button-groups", "Button groups"));
+        add(new Page(Section.COMPONENTS, "components/cards", "Cards"));
+        add(new Page(Section.COMPONENTS, "components/carousel", "Carousel"));
+        add(new Page(Section.COMPONENTS, "components/close-button", "Close button"));
+        add(new Page(Section.COMPONENTS, "components/collapse", "Collapse"));
+        add(new Page(Section.COMPONENTS, "components/dropdowns", "Dropdowns"));
+        add(new Page(Section.COMPONENTS, "components/icons", "Icons"));
+        add(new Page(Section.COMPONENTS, "components/list-group", "List group"));
+        add(new Page(Section.COMPONENTS, "components/modal", "Modal"));
+        add(new Page(Section.COMPONENTS, "components/navbar", "Navbar"));
+        add(new Page(Section.COMPONENTS, "components/navs", "Navs"));
+        add(new Page(Section.COMPONENTS, "components/tabs", "Tabs"));
+        add(new Page(Section.COMPONENTS, "components/offcanvas", "Offcanvas"));
+        add(new Page(Section.COMPONENTS, "components/pagination", "Pagination"));
+        add(new Page(Section.COMPONENTS, "components/placeholders", "Placeholders"));
+        add(new Page(Section.COMPONENTS, "components/popovers", "Popovers"));
+        add(new Page(Section.COMPONENTS, "components/progress", "Progress"));
+        add(new Page(Section.COMPONENTS, "components/scrollspy", "Scrollspy"));
+        add(new Page(Section.COMPONENTS, "components/spinners", "Spinners"));
+        add(new Page(Section.COMPONENTS, "components/toasts", "Toasts"));
+        add(new Page(Section.COMPONENTS, "components/tooltips", "Tooltips"));
     }
 
     private Pages() {
