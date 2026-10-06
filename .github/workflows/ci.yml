@@ -1,0 +1,12 @@
+name: CI
+
+# Pushes to master are built by the Pages workflow, which only publishes a demo that passes
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: gwtbootstrap5/gwtbootstrap5-parent/.github/workflows/build.yml@master
