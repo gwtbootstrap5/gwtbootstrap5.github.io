@@ -4,8 +4,8 @@
 
 For each entry of the menu, the page must load, every example must render something and
 show its source code, and no JavaScript error may be thrown along the way. Then the
-components driven by Bootstrap's JavaScript are opened and closed the way a user
-would, which the GWT tests can't do in HtmlUnit. Last, the extras whose JavaScript
+components driven by Bootstrap's JavaScript, and the extras, are opened and closed the way
+a user would, which the GWT tests can't do in HtmlUnit. Last, the extras whose JavaScript
 widget lives outside the GWT widget (Select, the date pickers) are removed from the page
 and added again, to check that the old widget is destroyed and the new one keeps the
 value. Exits with 1 when a check fails. Talks to Firefox through Marionette, so it needs nothing but Firefox.
@@ -143,6 +143,45 @@ BEHAVIOURS = [
          " && document.querySelector('.tooltip.show .tooltip-inner').textContent == 'Tooltip on top'"),
         (LIVE % 'Placement' + ".querySelector('.btn').dispatchEvent(new MouseEvent('mouseout', {bubbles: true}))",
          "!document.querySelector('.tooltip')"),
+    ]),
+    ('extras/select', 'the select opens, picks an option and closes', [
+        (LIVE % 'Single select' + ".querySelector('.ts-control').click()",
+         LIVE % 'Single select' + ".querySelector('.ts-dropdown')"
+         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown').style.display != 'none'"
+         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown [data-value=Spain]')"),
+        (LIVE % 'Single select' + ".querySelector('.ts-dropdown [data-value=Spain]').dispatchEvent(new MouseEvent('click', {bubbles: true}))",
+         LIVE % 'Single select' + ".textContent.includes('Selected: Spain.')"
+         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown').style.display == 'none'"),
+    ]),
+    ('extras/date-time-pickers', 'the Tempus Dominus picker opens, picks a day and closes', [
+        (LIVE % 'Tempus Dominus' + ".querySelector('input').click()",
+         "document.querySelector('.tempus-dominus-widget.show [data-action=selectDay]')"),
+        ("document.querySelector('.tempus-dominus-widget.show [data-action=selectDay]:not(.disabled)').click();"
+         "document.body.click()",
+         "!document.querySelector('.tempus-dominus-widget.show')"
+         " && " + LIVE % 'Tempus Dominus' + ".querySelector('input').value != ''"
+         " && " + LIVE % 'Tempus Dominus' + ".textContent.includes('Picked ')"),
+    ]),
+    ('extras/date-time-pickers', 'the Air Datepicker opens and closes', [
+        (LIVE % 'Air Datepicker, with limits and a locale' + ".querySelector('input').dispatchEvent(new FocusEvent('focus'))",
+         "document.querySelector('.air-datepicker.-active-')"),
+        (LIVE % 'Air Datepicker, with limits and a locale' + ".querySelector('input').dispatchEvent(new FocusEvent('blur'))",
+         "!document.querySelector('.air-datepicker.-active-')"),
+    ]),
+    ('extras/bootbox', 'the Bootbox alert opens and its callback runs when closed', [
+        (WATCH_SHOWN + LIVE % 'Alert, confirm and prompt' + ".querySelector('.btn').click()",
+         "window.__shown && document.querySelector('.bootbox.modal.show')"
+         " && document.querySelector('.bootbox.modal.show').textContent.includes('Hello from Bootbox!')"),
+        ("document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
+         "!document.querySelector('.bootbox.modal') && !document.querySelector('.modal-backdrop')"
+         " && " + LIVE % 'Alert, confirm and prompt' + ".textContent.includes('The alert was closed.')"),
+    ]),
+    ('extras/summernote', 'the Summernote editor takes and gives its HTML', [
+        ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Fill with sample text').click()" % (LIVE % 'Editor'),
+         LIVE % 'Editor' + ".querySelector('.note-editor .note-editable')"
+         " && " + LIVE % 'Editor' + ".querySelector('.note-editable').textContent.includes('Hello GwtBootstrap5!')"),
+        ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Show the HTML').click()" % (LIVE % 'Editor'),
+         LIVE % 'Editor' + ".querySelector('pre.bg-body-tertiary').textContent.includes('<b>GwtBootstrap5</b>')"),
     ]),
 ]
 
