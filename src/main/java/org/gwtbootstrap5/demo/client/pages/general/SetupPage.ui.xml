@@ -71,8 +71,9 @@
         <h2 class="h4 mt-5">5. Add the extras you need</h2>
         <p>
             The extras are a separate artifact, with one GWT module per extra. Most have <code>URL</code> and
-            <code>NoResources</code> variants like the core module. The Extras pages of this demo show which module
-            each one needs.
+            <code>NoResources</code> variants like the core module. <code>Select</code> and the date pickers load
+            their engine separately: add its resources module (or its <code>URL</code> variant) too. The Extras pages
+            of this demo show which modules each one needs.
         </p>
         <d:CodeBlock ui:field="extras" language="xml"/>
 

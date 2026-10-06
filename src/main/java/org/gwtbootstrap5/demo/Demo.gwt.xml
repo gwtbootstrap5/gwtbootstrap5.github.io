@@ -25,6 +25,22 @@
     <inherits name="com.google.gwt.storage.Storage"/>
     <inherits name="org.gwtbootstrap5.GwtBootstrap5"/>
 
+    <!-- Extras, with their scripts bundled. Font Awesome is a separate module (FontAwesomeDemo): it
+         replaces the icon lookup of the whole application, which would turn the Bootstrap Icons of
+         the other pages into Font Awesome icons. -->
+    <inherits name="org.gwtbootstrap5.extras.animate.Animate"/>
+    <inherits name="org.gwtbootstrap5.extras.bootbox.Bootbox"/>
+    <inherits name="org.gwtbootstrap5.extras.colorpicker.ColorPicker"/>
+    <inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
+    <inherits name="org.gwtbootstrap5.extras.datepicker.DatePicker"/>
+    <inherits name="org.gwtbootstrap5.extras.timepicker.TimePicker"/>
+    <inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
+    <inherits name="org.gwtbootstrap5.extras.datetimepicker.client.AirDatepickerResources"/>
+    <inherits name="org.gwtbootstrap5.extras.range.Range"/>
+    <inherits name="org.gwtbootstrap5.extras.select.Select"/>
+    <inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
+    <inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
+
     <!-- One permutation: the demo targets current browsers only, and it keeps CI fast -->
     <collapse-all-properties/>
 

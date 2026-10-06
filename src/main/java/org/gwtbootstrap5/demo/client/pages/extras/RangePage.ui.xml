@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==========================LICENSE_START===============================
   GwtBootstrap5
@@ -17,17 +18,14 @@
   limitations under the License.
   ==========================LICENSE_END=================================
   -->
-<dependency>
-  <groupId>io.github.gwtbootstrap5</groupId>
-  <artifactId>gwtbootstrap5-extras</artifactId>
-  <version>0.2.0</version>
-</dependency>
 
-<!-- In your .gwt.xml, one inherit per extra you use -->
-<inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
-
-<!-- Select and the date pickers also need their engine's script -->
-<inherits name="org.gwtbootstrap5.extras.select.Select"/>
-<inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Range slider</h1>
+        <p class="lead">Sliders with one or two handles, by <a href="https://github.com/seiyria/bootstrap-slider">bootstrap-slider</a> 11. Inherit <code>org.gwtbootstrap5.extras.range.Range</code>.</p>
+        <d:Example ui:field="basic" heading="Slider and range slider" description="A `Slider` has one handle and a `Double` value; a `RangeSlider` has two and a `Range`, written `[min,max]` in UiBinder."/>
+        <d:Example ui:field="ticks" heading="Ticks and labels" description="`setTicks` and `setTicksLabels` snap the handle to marked values."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

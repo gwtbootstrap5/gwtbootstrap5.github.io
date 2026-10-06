@@ -79,6 +79,21 @@ public final class Pages {
         add(new Page(Section.COMPONENTS, "components/spinners", "Spinners"));
         add(new Page(Section.COMPONENTS, "components/toasts", "Toasts"));
         add(new Page(Section.COMPONENTS, "components/tooltips", "Tooltips"));
+
+        add(new Page(Section.HELPERS, "helpers/color-modes", "Color modes"));
+        add(new Page(Section.HELPERS, "helpers/ratio", "Ratio"));
+        add(new Page(Section.HELPERS, "helpers/stacks", "Stacks"));
+        add(new Page(Section.HELPERS, "helpers/links", "Links and text"));
+
+        add(new Page(Section.EXTRAS, "extras/animate", "Animate"));
+        add(new Page(Section.EXTRAS, "extras/bootbox", "Bootbox"));
+        add(new Page(Section.EXTRAS, "extras/color-picker", "Color picker"));
+        add(new Page(Section.EXTRAS, "extras/date-time-pickers", "Date and time pickers"));
+        add(new Page(Section.EXTRAS, "extras/font-awesome", "Font Awesome"));
+        add(new Page(Section.EXTRAS, "extras/range", "Range slider"));
+        add(new Page(Section.EXTRAS, "extras/select", "Select"));
+        add(new Page(Section.EXTRAS, "extras/summernote", "Summernote"));
+
     }
 
     private Pages() {

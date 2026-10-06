@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Color modes</h1>
+        <p class="lead">Light and dark themes: <code>ColorModeHelper</code> writes Bootstrap's <code>data-bs-theme</code> on the page or on a single widget.</p>
+        <d:Example ui:field="widget" heading="On one widget" description="`ColorModeHelper.setColorMode(widget, ColorMode.DARK)` darkens a widget and everything in it, whatever the page&#x27;s mode. Widgets with a `type` of `ColorMode`, like `Navbar`, do it from UiBinder."/>
+        <d:Example ui:field="page" heading="The whole page" description="`setPageColorMode` sets the mode of the page; `followSystem()` follows the browser&#x27;s light or dark preference until you remove the registration it returns. The menu at the top of this demo does the same."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

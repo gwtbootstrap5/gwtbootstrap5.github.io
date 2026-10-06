@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==========================LICENSE_START===============================
   GwtBootstrap5
@@ -17,17 +18,19 @@
   limitations under the License.
   ==========================LICENSE_END=================================
   -->
-<dependency>
-  <groupId>io.github.gwtbootstrap5</groupId>
-  <artifactId>gwtbootstrap5-extras</artifactId>
-  <version>0.2.0</version>
-</dependency>
+<!-- The Font Awesome page, shown in an iframe of the demo: the FontAwesome extra replaces the icon
+     lookup of the whole application, so it can't share the demo's module. -->
+<module rename-to="fontawesome">
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.resources.Resources"/>
+    <inherits name="org.gwtbootstrap5.GwtBootstrap5"/>
+    <inherits name="org.gwtbootstrap5.extras.fontawesome.FontAwesome"/>
 
-<!-- In your .gwt.xml, one inherit per extra you use -->
-<inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
+    <collapse-all-properties/>
 
-<!-- Select and the date pickers also need their engine's script -->
-<inherits name="org.gwtbootstrap5.extras.select.Select"/>
-<inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
+    <source path="client">
+        <include name="ui/**"/>
+    </source>
+    <source path="fontawesome"/>
+    <entry-point class="org.gwtbootstrap5.demo.fontawesome.FontAwesomeDemoEntryPoint"/>
+</module>

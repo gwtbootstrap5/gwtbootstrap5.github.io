@@ -22,8 +22,10 @@ package org.gwtbootstrap5.demo.client.nav;
 
 import org.gwtbootstrap5.demo.client.pages.components.ComponentsPages;
 import org.gwtbootstrap5.demo.client.pages.content.ContentPages;
+import org.gwtbootstrap5.demo.client.pages.extras.ExtrasPages;
 import org.gwtbootstrap5.demo.client.pages.forms.FormsPages;
 import org.gwtbootstrap5.demo.client.pages.general.GeneralPages;
+import org.gwtbootstrap5.demo.client.pages.helpers.HelpersPages;
 import org.gwtbootstrap5.demo.client.pages.layout.LayoutPages;
 
 import com.google.gwt.core.client.GWT;
@@ -86,6 +88,28 @@ public enum Section {
                 @Override
                 public void onSuccess() {
                     callback.onPage(ComponentsPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    HELPERS("Helpers") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(HelpersPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(HelpersPages.create(page.getToken()));
+                }
+            });
+        }
+    },
+    EXTRAS("Extras") {
+        @Override
+        void create(final Page page, final PageCallback callback) {
+            GWT.runAsync(ExtrasPages.class, new Loader(callback) {
+                @Override
+                public void onSuccess() {
+                    callback.onPage(ExtrasPages.create(page.getToken()));
                 }
             });
         }

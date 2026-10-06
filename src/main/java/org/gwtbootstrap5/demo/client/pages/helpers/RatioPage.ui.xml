@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==========================LICENSE_START===============================
   GwtBootstrap5
@@ -17,17 +18,14 @@
   limitations under the License.
   ==========================LICENSE_END=================================
   -->
-<dependency>
-  <groupId>io.github.gwtbootstrap5</groupId>
-  <artifactId>gwtbootstrap5-extras</artifactId>
-  <version>0.2.0</version>
-</dependency>
 
-<!-- In your .gwt.xml, one inherit per extra you use -->
-<inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
-
-<!-- Select and the date pickers also need their engine's script -->
-<inherits name="org.gwtbootstrap5.extras.select.Select"/>
-<inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Ratio</h1>
+        <p class="lead">Keep an element at an aspect ratio as its width changes, like an embedded video: <code>Ratio</code>.</p>
+        <d:Example ui:field="types" heading="Aspect ratios" description="`type` is `R1X1`, `R4X3`, `R16X9` (the default) or `R21X9`. The child fills the box."/>
+        <d:Example ui:field="image" heading="An image" description="An image in a 16:9 `Ratio` is cropped to fill it with `object-fit-cover`."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

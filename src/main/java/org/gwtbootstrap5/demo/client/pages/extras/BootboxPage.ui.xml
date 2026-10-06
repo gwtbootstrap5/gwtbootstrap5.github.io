@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Bootbox</h1>
+        <p class="lead">Alert, confirm and prompt dialogs in one line, built on Bootstrap modals by <a href="https://bootboxjs.com/">Bootbox</a> 6. Inherit <code>org.gwtbootstrap5.extras.bootbox.Bootbox</code>.</p>
+        <d:Example ui:field="dialogs" heading="Alert, confirm and prompt" description="`Bootbox.alert`, `confirm` and `prompt` open a modal and call you back with the answer: nothing, a boolean or the text typed (`null` if cancelled)."/>
+        <d:Example ui:field="custom" heading="Custom dialogs" description="`DialogOptions` builds a dialog with a title, a size and your own buttons."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -113,3 +113,16 @@
 .demo-live .badge + .badge {
   margin-left: .25rem;
 }
+
+/* Font Awesome page: a separate module in an iframe --------------------- */
+
+.demo-frame-host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  border: 0;
+}
+
+.demo-frame {
+  background-color: transparent;
+}

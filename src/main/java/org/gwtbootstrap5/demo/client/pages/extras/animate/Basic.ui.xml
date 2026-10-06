@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
+    <g:HTMLPanel>
+        <b.html:Div addStyleNames="d-flex flex-wrap gap-2 mb-3">
+            <b:Button ui:field="bounce" type="SECONDARY" text="Bounce"/>
+            <b:Button ui:field="tada" type="SECONDARY" text="Tada"/>
+            <b:Button ui:field="shake" type="SECONDARY" text="Shake"/>
+            <b:Button ui:field="flip" type="SECONDARY" text="Flip, twice and slow"/>
+        </b.html:Div>
+        <b:Card ui:field="card" width="240px">
+            <b:CardBody>
+                <b:CardTitle size="H5" text="Animate me"/>
+                <b:CardText>Pick an animation above.</b:CardText>
+            </b:CardBody>
+        </b:Card>
+    </g:HTMLPanel>
+</ui:UiBinder>

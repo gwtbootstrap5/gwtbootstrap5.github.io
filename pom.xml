@@ -77,6 +77,17 @@
                             <goal>compile</goal>
                         </goals>
                     </execution>
+                    <!-- The Font Awesome page: a separate module, shown in an iframe of the demo -->
+                    <execution>
+                        <id>fontawesome</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <moduleName>org.gwtbootstrap5.demo.FontAwesomeDemo</moduleName>
+                            <moduleShortName>fontawesome</moduleShortName>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

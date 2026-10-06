@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==========================LICENSE_START===============================
   GwtBootstrap5
@@ -17,17 +18,15 @@
   limitations under the License.
   ==========================LICENSE_END=================================
   -->
-<dependency>
-  <groupId>io.github.gwtbootstrap5</groupId>
-  <artifactId>gwtbootstrap5-extras</artifactId>
-  <version>0.2.0</version>
-</dependency>
 
-<!-- In your .gwt.xml, one inherit per extra you use -->
-<inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
-
-<!-- Select and the date pickers also need their engine's script -->
-<inherits name="org.gwtbootstrap5.extras.select.Select"/>
-<inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
-<inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html"
+             xmlns:sn="urn:import:org.gwtbootstrap5.extras.summernote.client.ui">
+    <g:HTMLPanel>
+        <sn:Summernote ui:field="air" airMode="true" placeholder="Select some text to format it"/>
+        <b.html:Paragraph ui:field="count" addStyleNames="mt-2 mb-0 small text-body-secondary">0 changes.</b.html:Paragraph>
+    </g:HTMLPanel>
+</ui:UiBinder>
