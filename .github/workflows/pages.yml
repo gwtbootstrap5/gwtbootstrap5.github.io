@@ -20,26 +20,26 @@ jobs:
     steps:
       # The demo is a module of gwtbootstrap5-parent and builds against master of core and extras
       - name: Check out gwtbootstrap5-parent
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: gwtbootstrap5/gwtbootstrap5-parent
           path: parent
       - name: Check out gwtbootstrap5
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: gwtbootstrap5/gwtbootstrap5
           path: parent/gwtbootstrap5
       - name: Check out gwtbootstrap5-extras
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: gwtbootstrap5/gwtbootstrap5-extras
           path: parent/gwtbootstrap5-extras
       - name: Check out the demo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: parent/gwtbootstrap5-demo
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: 17
@@ -56,7 +56,7 @@ jobs:
           rm -rf _site/WEB-INF _site/META-INF
           touch _site/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -68,4 +68,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
