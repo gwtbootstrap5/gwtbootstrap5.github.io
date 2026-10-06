@@ -47,6 +47,10 @@ public class IconsPage extends Composite {
     interface BasicBinder extends UiBinder<Widget, Object> {
     }
 
+    @UiTemplate("icons/Options.ui.xml")
+    interface OptionsBinder extends UiBinder<Widget, Object> {
+    }
+
     @UiTemplate("icons/Widgets.ui.xml")
     interface WidgetsBinder extends UiBinder<Widget, Object> {
     }
@@ -58,6 +62,9 @@ public class IconsPage extends Composite {
     interface Sources extends ClientBundle {
         @Source("icons/Basic.ui.xml")
         TextResource basic();
+
+        @Source("icons/Options.ui.xml")
+        TextResource options();
 
         @Source("icons/Widgets.ui.xml")
         TextResource widgets();
@@ -75,6 +82,8 @@ public class IconsPage extends Composite {
     @UiField
     Example basic;
     @UiField
+    Example options;
+    @UiField
     Example widgets;
     @UiField
     Example clicks;
@@ -82,6 +91,7 @@ public class IconsPage extends Composite {
     public IconsPage() {
         initWidget(BINDER.createAndBindUi(this));
         basic.show(GWT.<BasicBinder>create(BasicBinder.class).createAndBindUi(this), SOURCES.basic());
+        options.show(GWT.<OptionsBinder>create(OptionsBinder.class).createAndBindUi(this), SOURCES.options());
         widgets.show(GWT.<WidgetsBinder>create(WidgetsBinder.class).createAndBindUi(this), SOURCES.widgets());
         final LikeIcon clicksOwner = new LikeIcon();
         clicks.show(GWT.<ClicksBinder>create(ClicksBinder.class).createAndBindUi(clicksOwner), SOURCES.clicks());

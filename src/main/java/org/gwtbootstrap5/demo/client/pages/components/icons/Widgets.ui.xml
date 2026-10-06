@@ -28,6 +28,7 @@
         <b.html:Div addStyleNames="d-flex flex-wrap align-items-center gap-2">
             <b:Button type="PRIMARY" icon="DOWNLOAD" text="Download"/>
             <b:Button type="SECONDARY_OUTLINE" icon="GEAR"/>
+            <b:Button type="PRIMARY" icon="ARROW_REPEAT" iconSpin="true" text="Syncing"/>
             <b:Anchor icon="BOX_ARROW_UP_RIGHT" iconPosition="RIGHT" text="Bootstrap Icons" href="https://icons.getbootstrap.com/" target="_blank"/>
         </b.html:Div>
     </g:HTMLPanel>

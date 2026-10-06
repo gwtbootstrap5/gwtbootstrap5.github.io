@@ -26,7 +26,8 @@
         <h1>Icons</h1>
         <p class="lead">Core uses <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>: <code>Icon</code>, and the <code>icon</code> property of buttons, links and list items.</p>
         <d:Example ui:field="basic" heading="Basic" description="`icon` takes the name of an `IconTypeBI` constant (`setType(IconTypeBI)` in Java). Icons are text, so color and size them like text: `emphasis`, or utilities such as `fs-2`."/>
-        <d:Example ui:field="widgets" heading="In other widgets" description="Buttons, links, nav items and headings take an `icon` too."/>
+        <d:Example ui:field="options" heading="Size, animation, rotation and stacks" description="`size` is `LARGE` or `TIMES2` to `TIMES5`; `spin` and `pulse` animate; `rotate`, `flip`, `border` and `fixedWidth` do what they say. An `IconStack` lays a `stackTop` icon over a `stackBase` one, and `inverse` makes it white."/>
+        <d:Example ui:field="widgets" heading="In other widgets" description="Buttons, links, nav items and headings take an `icon` too, and the same options with an `icon` prefix: `iconSpin`, `iconSize`..."/>
         <d:Example ui:field="clicks" heading="Clickable icons" description="An `Icon` has `addClickHandler`; give it a role and a label so it is usable from the keyboard and by screen readers."/>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -24,7 +24,7 @@
              xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
     <g:HTMLPanel>
         <h1>Font Awesome</h1>
-        <p class="lead">The <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> 7 Free icons, and the icon options that need them: sizes, animations, rotation, stacks. Inherit <code>org.gwtbootstrap5.extras.fontawesome.FontAwesome</code>. It changes how every <code>icon</code> name is looked up: Font Awesome first, then Bootstrap Icons, so this page runs as a separate module.</p>
+        <p class="lead">The <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> 7 Free icons, with the same options as Bootstrap Icons: sizes, animations, rotation, stacks. Inherit <code>org.gwtbootstrap5.extras.fontawesome.FontAwesome</code>. It changes how every <code>icon</code> name is looked up: Font Awesome first, then Bootstrap Icons, so this page runs as a separate module.</p>
         <d:Example ui:field="styles" heading="Solid, regular and brands" description="In UiBinder, `icon` takes a constant name, looked up in `IconTypeFASolid`, then `IconTypeFARegular`, `IconTypeFABrands` and the Bootstrap Icons. Pick a style from Java with `setType`. Font Awesome Free has only a few regular icons."/>
         <d:Example ui:field="options" heading="Size, animation, rotation and flip" description="`size` is `LARGE` or `TIMES2` to `TIMES5`; `spin` and `pulse` animate; `rotate`, `flip`, `border` and `fixedWidth` are the other options."/>
         <d:Example ui:field="stack" heading="Stacked icons" description="An `IconStack` lays one icon over another: the base one with `stackBase` and the top one with `stackTop`; `inverse` makes it white."/>
