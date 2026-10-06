@@ -20,6 +20,7 @@ package org.gwtbootstrap5.demo.client.pages.extras;
  * ==========================LICENSE_END=================================
  */
 
+import org.gwtbootstrap5.client.ui.Button;
 import org.gwtbootstrap5.client.ui.html.Paragraph;
 import org.gwtbootstrap5.demo.client.ui.Example;
 import org.gwtbootstrap5.extras.datepicker.client.ui.DatePicker;
@@ -33,6 +34,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -54,12 +56,19 @@ public class DateTimePickersPage extends Composite {
     interface AirBinder extends UiBinder<Widget, AirPickers> {
     }
 
+    @UiTemplate("datetimepickers/Reattach.ui.xml")
+    interface ReattachBinder extends UiBinder<Widget, ReattachedPickers> {
+    }
+
     interface Sources extends ClientBundle {
         @Source("datetimepickers/Tempus.ui.xml")
         TextResource tempus();
 
         @Source("datetimepickers/Air.ui.xml")
         TextResource air();
+
+        @Source("datetimepickers/Reattach.ui.xml")
+        TextResource reattach();
 
         @Source("DateTimePickersPage.java")
         TextResource java();
@@ -72,6 +81,8 @@ public class DateTimePickersPage extends Composite {
     Example tempus;
     @UiField
     Example air;
+    @UiField
+    Example reattach;
 
     public DateTimePickersPage() {
         initWidget(BINDER.createAndBindUi(this));
@@ -83,6 +94,10 @@ public class DateTimePickersPage extends Composite {
         air.show(GWT.<AirBinder>create(AirBinder.class).createAndBindUi(airOwner), SOURCES.air());
         airOwner.init();
         air.addJava(SOURCES.java(), "air");
+        final ReattachedPickers reattachOwner = new ReattachedPickers();
+        reattach.show(GWT.<ReattachBinder>create(ReattachBinder.class).createAndBindUi(reattachOwner), SOURCES.reattach());
+        reattachOwner.init();
+        reattach.addJava(SOURCES.java(), "reattach");
     }
 
     static class TempusPickers {
@@ -120,5 +135,35 @@ public class DateTimePickersPage extends Composite {
             stepped.setMinuteStep(15);
         }
         // [END air]
+    }
+
+    static class ReattachedPickers {
+        // [START reattach]
+        @UiField
+        FlowPanel tempusHolder;
+        @UiField
+        DatePicker tempusDate;
+        @UiField
+        FlowPanel airHolder;
+        @UiField
+        DatePicker airDate;
+        @UiField
+        Button reattach;
+
+        @SuppressWarnings("deprecation")
+        void init() {
+            final Date firstOfMonth = new Date(new Date().getYear(), new Date().getMonth(), 1);
+            tempusDate.setValue(firstOfMonth);
+            airDate.setValue(firstOfMonth);
+            // Removing a picker destroys its calendar; adding it again creates a new one with the
+            // same value
+            reattach.addClickHandler(event -> {
+                tempusHolder.remove(tempusDate);
+                tempusHolder.add(tempusDate);
+                airHolder.remove(airDate);
+                airHolder.add(airDate);
+            });
+        }
+        // [END reattach]
     }
 }

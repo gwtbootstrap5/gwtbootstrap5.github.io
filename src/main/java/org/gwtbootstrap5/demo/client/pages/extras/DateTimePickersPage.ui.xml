@@ -27,5 +27,6 @@
         <p class="lead"><code>DatePicker</code>, <code>TimePicker</code> and <code>DateTimePicker</code>, on one of two engines: <a href="https://getdatepicker.com/">Tempus Dominus</a> 6 or <a href="https://air-datepicker.com/">Air Datepicker</a> 3. Inherit <code>org.gwtbootstrap5.extras.datetimepicker.DateTimePicker</code> and <code>org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources</code>. For Air Datepicker, inherit <code>...client.AirDatepickerResources</code> instead; <code>DatePicker</code> and <code>TimePicker</code> have their own modules.</p>
         <d:Example ui:field="tempus" heading="Tempus Dominus" description="The constructor takes the engine. Pickers are `HasValue&lt;Date&gt;` and take a `placeholder`."/>
         <d:Example ui:field="air" heading="Air Datepicker, with limits and a locale" description="`setMinDate` and `setMaxDate` limit the choice; `setLocale` translates the calendar. Buttons for today and clearing are options too."/>
+        <d:Example ui:field="reattach" heading="Removed and added again" description="A picker removed from the page destroys its calendar, and creates a new one when it is added again, keeping its value."/>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -20,6 +20,7 @@ package org.gwtbootstrap5.demo.client.pages.extras;
  * ==========================LICENSE_END=================================
  */
 
+import org.gwtbootstrap5.client.ui.Button;
 import org.gwtbootstrap5.client.ui.html.Paragraph;
 import org.gwtbootstrap5.demo.client.ui.Example;
 import org.gwtbootstrap5.extras.select.client.ui.MultipleSelect;
@@ -33,6 +34,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -55,12 +57,19 @@ public class SelectPage extends Composite {
     interface MultipleBinder extends UiBinder<Widget, ToppingsSelect> {
     }
 
+    @UiTemplate("select/Reattach.ui.xml")
+    interface ReattachBinder extends UiBinder<Widget, ReattachedSelect> {
+    }
+
     interface Sources extends ClientBundle {
         @Source("select/Single.ui.xml")
         TextResource single();
 
         @Source("select/Multiple.ui.xml")
         TextResource multiple();
+
+        @Source("select/Reattach.ui.xml")
+        TextResource reattach();
 
         @Source("SelectPage.java")
         TextResource java();
@@ -73,6 +82,8 @@ public class SelectPage extends Composite {
     Example single;
     @UiField
     Example multiple;
+    @UiField
+    Example reattach;
 
     public SelectPage() {
         initWidget(BINDER.createAndBindUi(this));
@@ -84,6 +95,10 @@ public class SelectPage extends Composite {
         multiple.show(GWT.<MultipleBinder>create(MultipleBinder.class).createAndBindUi(multipleOwner), SOURCES.multiple());
         multipleOwner.init();
         multiple.addJava(SOURCES.java(), "multiple");
+        final ReattachedSelect reattachOwner = new ReattachedSelect();
+        reattach.show(GWT.<ReattachBinder>create(ReattachBinder.class).createAndBindUi(reattachOwner), SOURCES.reattach());
+        reattachOwner.init();
+        reattach.addJava(SOURCES.java(), "reattach");
     }
 
     static class CountrySelect {
@@ -144,5 +159,27 @@ public class SelectPage extends Composite {
             });
         }
         // [END multiple]
+    }
+
+    static class ReattachedSelect {
+        // [START reattach]
+        @UiField
+        FlowPanel holder;
+        @UiField
+        Select<String> size;
+        @UiField
+        Button reattach;
+
+        void init() {
+            size.setOptions(Arrays.asList("Small", "Medium", "Large"));
+            size.setValue("Medium");
+            // Removing the select destroys its Tom Select; adding it again creates a new one with
+            // the same options and value
+            reattach.addClickHandler(event -> {
+                holder.remove(size);
+                holder.add(size);
+            });
+        }
+        // [END reattach]
     }
 }
