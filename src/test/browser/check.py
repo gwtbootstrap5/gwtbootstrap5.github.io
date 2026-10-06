@@ -3,10 +3,12 @@
     python3 src/test/browser/check.py http://localhost:8000
 
 For each entry of the menu, the page must load, every example must render something and
-show its source code, and no JavaScript error may be thrown along the way. Then the extras
-whose JavaScript widget lives outside the GWT widget (Select, the date pickers) are
-removed from the page and added again, to check that the old widget is destroyed and the
-new one keeps the value. Exits with 1 when a check fails. Talks to Firefox through Marionette, so it needs nothing but Firefox.
+show its source code, and no JavaScript error may be thrown along the way. Then the
+components driven by Bootstrap's JavaScript are opened and closed the way a user
+would, which the GWT tests can't do in HtmlUnit. Last, the extras whose JavaScript
+widget lives outside the GWT widget (Select, the date pickers) are removed from the page
+and added again, to check that the old widget is destroyed and the new one keeps the
+value. Exits with 1 when a check fails. Talks to Firefox through Marionette, so it needs nothing but Firefox.
 """
 import json
 import socket
@@ -97,6 +99,67 @@ OPEN_TEMPUS_PICKERS = """for (const input of document.querySelectorAll('.demo-co
 TEMPUS_WIDGETS = "document.querySelectorAll('.tempus-dominus-widget').length"
 
 
+# Each behaviour opens a page and runs its steps in order: a script that acts the way a user
+# would, then a condition that must become true. Events are dispatched from JavaScript, so
+# the steps don't depend on where the elements are on the screen.
+LIVE = EXAMPLE
+
+# Bootstrap ignores a hide while the modal is still showing: wait for shown.bs.modal
+WATCH_SHOWN = ("window.__shown = false;"
+               "document.addEventListener('shown.bs.modal', () => window.__shown = true, {once: true});")
+BEHAVIOURS = [
+    ('components/offcanvas', 'the offcanvas opens and closes', [
+        (LIVE % 'Basic' + ".querySelector('.btn').click()",
+         "document.querySelector('#offcanvas-basic.show')"
+         " && document.querySelector('.offcanvas-backdrop')"),
+        ("document.querySelector('#offcanvas-basic [data-bs-dismiss=offcanvas]').click()",
+         "!document.querySelector('#offcanvas-basic.show, #offcanvas-basic.showing, #offcanvas-basic.hiding')"
+         " && !document.querySelector('.offcanvas-backdrop')"),
+    ]),
+    ('components/modal', 'the modal opens and closes', [
+        (WATCH_SHOWN + LIVE % 'Basic' + ".querySelector('.btn').click()",
+         "window.__shown && document.querySelector('#modal-basic.show')"
+         " && document.body.classList.contains('modal-open')"),
+        ("document.querySelector('#modal-basic .modal-footer [data-bs-dismiss=modal]').click()",
+         "!document.querySelector('#modal-basic.show') && !document.querySelector('.modal-backdrop')"
+         " && !document.body.classList.contains('modal-open')"),
+    ]),
+    ('components/dropdowns', 'the dropdown opens and closes', [
+        (LIVE % 'Basic' + ".querySelector('[data-bs-toggle=dropdown]').click()",
+         LIVE % 'Basic' + ".querySelector('.dropdown-menu.show')"
+         " && " + LIVE % 'Basic' + ".querySelector('[data-bs-toggle=dropdown]').getAttribute('aria-expanded') == 'true'"),
+        (LIVE % 'Basic' + ".querySelector('[data-bs-toggle=dropdown]').click()",
+         "!" + LIVE % 'Basic' + ".querySelector('.dropdown-menu.show')"),
+    ]),
+    ('components/collapse', 'the collapse opens and closes', [
+        (LIVE % 'Basic' + ".querySelector('.btn').click()",
+         "document.querySelector('#collapse-basic.collapse.show')"),
+        (LIVE % 'Basic' + ".querySelector('.btn').click()",
+         "document.querySelector('#collapse-basic.collapse:not(.show)')"),
+    ]),
+    ('components/tooltips', 'the tooltip shows on hover and hides', [
+        (LIVE % 'Placement' + ".querySelector('.btn').dispatchEvent(new MouseEvent('mouseover', {bubbles: true}))",
+         "document.querySelector('.tooltip.show')"
+         " && document.querySelector('.tooltip.show .tooltip-inner').textContent == 'Tooltip on top'"),
+        (LIVE % 'Placement' + ".querySelector('.btn').dispatchEvent(new MouseEvent('mouseout', {bubbles: true}))",
+         "!document.querySelector('.tooltip')"),
+    ]),
+]
+
+
+def check_behaviour(browser, check):
+    """Opens and closes the components driven by JavaScript."""
+    for token, name, steps in BEHAVIOURS:
+        open_page(browser, token)
+        failed = ''
+        for number, (action, condition) in enumerate(steps, 1):
+            browser.js(action + ';')
+            if not browser.wait(condition, 10):
+                failed = 'step %d' % number
+                break
+        check('%s: %s' % (token, name), not failed, failed)
+
+
 def check_reattach(browser, check):
     """Select and the date pickers destroy their JavaScript widget when they leave the page."""
     # Tom Select keeps its instance on the <select>; removed and added again, the select gets
@@ -178,6 +241,7 @@ def main(base):
                 [...e.querySelectorAll('.demo-sources code')].map(c => c.textContent.length)])""")
             broken = [e[0] for e in examples if not e[1] or not e[2] or 0 in e[2]]
             check('%s: %d examples render with their code' % (token, len(examples)), loaded and not broken, broken or '')
+        check_behaviour(browser, check)
         check_reattach(browser, check)
         errors = browser.js('return window.__errors')
         check('no JavaScript errors', errors == [], errors)
