@@ -38,7 +38,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
- * Landing page: what GwtBootstrap5 is, what 0.3.0 brings, and a card per section of the demo.
+ * Landing page: what GwtBootstrap5 is, what 0.3.1 brings, and a card per section of the demo.
  */
 public class HomePage extends Composite {
 
