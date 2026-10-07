@@ -212,6 +212,53 @@ BEHAVIOURS = [
         ("document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
          "!document.querySelector('.bootbox.modal') && !document.querySelector('.modal-backdrop')"),
     ]),
+    ('extras/bootbox', 'jQuery 4 is loaded, with jQuery Migrate for Summernote and the color picker', [
+        ("void 0", "window.jQuery && jQuery.fn.jquery.startsWith('4.') && jQuery.migrateVersion && jQuery.migrateVersion.startsWith('4.')"),
+    ]),
+    ('extras/bootbox', 'confirm and prompt answer, and prompt cancels', [
+        (WATCH_SHOWN + "[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Confirm').click()" % LIVE % 'Alert, confirm and prompt',
+         "window.__shown && document.querySelector('.bootbox.modal.show')"),
+        ("document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
+         "!document.querySelector('.bootbox.modal') && " + LIVE % 'Alert, confirm and prompt' + ".textContent.includes('Confirmed.')"),
+        (WATCH_SHOWN + "[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Prompt').click()" % LIVE % 'Alert, confirm and prompt',
+         "window.__shown && document.querySelector('.bootbox.modal.show input')"),
+        ("const i = document.querySelector('.bootbox.modal.show input'); i.value = 'Ada';"
+         " document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
+         "!document.querySelector('.bootbox.modal') && " + LIVE % 'Alert, confirm and prompt' + ".textContent.includes('Hello, Ada!')"),
+        (WATCH_SHOWN + "[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Prompt').click()" % LIVE % 'Alert, confirm and prompt',
+         "window.__shown && document.querySelector('.bootbox.modal.show input')"),
+        ("document.querySelector('.bootbox.modal.show .bootbox-cancel').click()",
+         "!document.querySelector('.bootbox.modal') && !document.querySelector('.modal-backdrop')"
+         " && " + LIVE % 'Alert, confirm and prompt' + ".textContent.includes('Prompt cancelled.')"),
+    ]),
+    ('extras/summernote', 'the Summernote toolbar: bold, a dropdown, code view and the link dialog', [
+        ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Fill with sample text').click()" % LIVE % 'Editor',
+         LIVE % 'Editor' + ".querySelector('.note-editable p')"),
+        ("const ed = " + LIVE % 'Editor' + ".querySelector('.note-editable'); ed.focus(); const r = document.createRange();"
+         " r.selectNodeContents(ed.querySelector('p')); getSelection().removeAllRanges(); getSelection().addRange(r);"
+         " " + LIVE % 'Editor' + ".querySelector('.note-btn-bold').click()",
+         LIVE % 'Editor' + ".querySelector('.note-editable b, .note-editable strong')"),
+        (LIVE % 'Editor' + ".querySelector('.note-toolbar .dropdown-toggle').click()",
+         LIVE % 'Editor' + ".querySelector('.note-toolbar .dropdown-menu.show')"),
+        (LIVE % 'Editor' + ".querySelector('.note-toolbar .dropdown-toggle').click()",
+         "!" + LIVE % 'Editor' + ".querySelector('.note-toolbar .dropdown-menu.show')"),
+        (LIVE % 'Editor' + ".querySelector('.btn-codeview').click()",
+         LIVE % 'Editor' + ".querySelector('.note-editor.codeview') && " + LIVE % 'Editor' + ".querySelector('.note-codable').value.includes('GwtBootstrap5')"),
+        (LIVE % 'Editor' + ".querySelector('.btn-codeview').click()",
+         "!" + LIVE % 'Editor' + ".querySelector('.note-editor.codeview')"),
+        (LIVE % 'Editor' + ".querySelector('.note-icon-link').closest('button').click()",
+         "document.querySelector('.modal.show .note-link-url')"),
+        ("document.querySelector('.modal.show .btn-close, .modal.show .close').click()",
+         "!document.querySelector('.modal.show') && !document.querySelector('.modal-backdrop.show')"),
+    ]),
+    ('extras/color-picker', 'dragging on the color picker changes the color', [
+        ("window.__color = " + LIVE % 'Picking a color' + ".querySelector('.font-monospace').textContent;"
+         " const s = document.querySelector('.colorpicker-saturation'), r = s.getBoundingClientRect(),"
+         " x = r.left + r.width * 0.8, y = r.top + r.height * 0.2;"
+         " for (const t of ['mousedown', 'mousemove', 'mouseup']) (t == 'mousedown' ? s : document).dispatchEvent("
+         "new MouseEvent(t, {bubbles: true, clientX: x, clientY: y, pageX: x + scrollX, pageY: y + scrollY}))",
+         LIVE % 'Picking a color' + ".querySelector('.font-monospace').textContent != window.__color"),
+    ]),
     ('extras/summernote', 'the Summernote editor takes and gives its HTML', [
         ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Fill with sample text').click()" % (LIVE % 'Editor'),
          LIVE % 'Editor' + ".querySelector('.note-editor .note-editable')"
