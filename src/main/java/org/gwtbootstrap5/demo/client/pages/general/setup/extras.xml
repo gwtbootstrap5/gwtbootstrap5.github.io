@@ -20,7 +20,7 @@
 <dependency>
   <groupId>io.github.gwtbootstrap5</groupId>
   <artifactId>gwtbootstrap5-extras</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 
 <!-- In your .gwt.xml, one inherit per extra you use -->

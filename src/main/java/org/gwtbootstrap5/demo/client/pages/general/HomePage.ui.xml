@@ -36,7 +36,14 @@
             </div>
         </div>
 
-        <h2 class="h4">What's new in 0.2.0</h2>
+        <h2 class="h4">What's new in 0.3.0</h2>
+        <ul class="mb-4">
+            <li>The APIs deprecated in 0.2.x are removed, each with a one-line replacement.</li>
+            <li>Select and the date pickers destroy their JavaScript widget when they leave the page.</li>
+            <li>Javadoc for the whole public API, with links to the Bootstrap pages and UiBinder examples.</li>
+        </ul>
+
+        <h2 class="h5">And in 0.2.0</h2>
         <ul class="mb-4">
             <li>JsInterop instead of JSNI, and no jQuery in the core module.</li>
             <li>New components: Offcanvas, Accordion items, Switch, FloatingLabel, Placeholder, InputColor,
@@ -45,7 +52,7 @@
             <li>Published on Maven Central as <code>io.github.gwtbootstrap5</code>.</li>
         </ul>
         <p>
-            Upgrading from 0.1.x? Read
+            Upgrading from 0.2.x or 0.1.x? Read
             <a href="https://github.com/gwtbootstrap5/gwtbootstrap5-parent/blob/master/UPGRADING.md">UPGRADING.md</a>.
         </p>
 

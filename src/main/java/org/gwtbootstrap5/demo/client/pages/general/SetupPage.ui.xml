@@ -77,9 +77,9 @@
         </p>
         <d:CodeBlock ui:field="extras" language="xml"/>
 
-        <h2 class="h4 mt-5">Upgrading from 0.1.x</h2>
+        <h2 class="h4 mt-5">Upgrading from 0.2.x or 0.1.x</h2>
         <p>
-            0.2.0 changes the Maven <code>groupId</code> and several APIs. See
+            0.3.0 removes the APIs deprecated in 0.2.x, and 0.2.0 changed the Maven <code>groupId</code> and several APIs. See
             <a href="https://github.com/gwtbootstrap5/gwtbootstrap5-parent/blob/master/UPGRADING.md">UPGRADING.md</a>
             for what to change.
         </p>
