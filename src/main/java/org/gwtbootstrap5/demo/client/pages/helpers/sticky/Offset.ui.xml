@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
+    <g:HTMLPanel>
+        <b:Button ui:field="toggle" type="SECONDARY" text="Stop sticking" addStyleNames="mb-2"/>
+        <b.html:Div addStyleNames="border rounded overflow-auto" height="200px">
+            <b.html:Div ui:field="label" addStyleNames="mx-3 my-2 p-2 rounded bg-warning-subtle"><b.html:Span text="Sticks 12 px from the top"/></b.html:Div>
+            <b.html:Paragraph addStyleNames="px-3">Scroll this box: the label stops 12 pixels before the top edge.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3"><code>StickyHelper.setSticky(widget, position, offset)</code> writes the offset as the CSS <code>top</code> for the top positions and <code>bottom</code> for the bottom ones.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3"><code>removeSticky</code> takes away the class and the offset, leaving the other classes.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3">The button switches between the two.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3 pb-3">That's all.</b.html:Paragraph>
+        </b.html:Div>
+    </g:HTMLPanel>
+</ui:UiBinder>

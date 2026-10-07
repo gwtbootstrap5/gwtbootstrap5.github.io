@@ -38,6 +38,8 @@ public final class HelpersPages {
                 return new StacksPage();
             case "helpers/links":
                 return new LinksPage();
+            case "helpers/sticky":
+                return new StickyPage();
             default:
                 return new ColorModesPage();
         }

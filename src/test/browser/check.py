@@ -144,6 +144,26 @@ BEHAVIOURS = [
         (LIVE % 'Placement' + ".querySelector('.btn').dispatchEvent(new MouseEvent('mouseout', {bubbles: true}))",
          "!document.querySelector('.tooltip')"),
     ]),
+    ('helpers/sticky', 'the sticky header and footer stay at the edges of the box that scrolls', [
+        ("const box = " + LIVE % 'Top and bottom' + ".querySelector('.overflow-auto'); box.scrollTop = 120",
+         "(() => { const box = " + LIVE % 'Top and bottom' + ".querySelector('.overflow-auto'), r = box.getBoundingClientRect();"
+         " const top = box.querySelector('.sticky-top').getBoundingClientRect(),"
+         " bottom = box.querySelector('.sticky-bottom').getBoundingClientRect();"
+         " return box.scrollTop > 0 && Math.abs(top.top - r.top - box.clientTop) < 1"
+         " && Math.abs(r.top + box.clientTop + box.clientHeight - bottom.bottom) < 1; })()"),
+    ]),
+    ('helpers/sticky', 'the offset keeps the label 12 px from the top until removeSticky', [
+        ("const box = " + LIVE % 'An offset, from Java' + ".querySelector('.overflow-auto'); box.scrollTop = 120",
+         "(() => { const box = " + LIVE % 'An offset, from Java' + ".querySelector('.overflow-auto');"
+         " const label = box.querySelector('.sticky-top');"
+         " return box.scrollTop > 0 && label && label.style.top == '12px'"
+         " && Math.abs(label.getBoundingClientRect().top - box.getBoundingClientRect().top - box.clientTop - 12) < 1; })()"),
+        (LIVE % 'An offset, from Java' + ".querySelector('.btn').click()",
+         "(() => { const box = " + LIVE % 'An offset, from Java' + ".querySelector('.overflow-auto');"
+         " return !box.querySelector('.sticky-top') && box.firstElementChild.style.top == ''"
+         " && box.firstElementChild.getBoundingClientRect().bottom < box.getBoundingClientRect().top"
+         " && " + LIVE % 'An offset, from Java' + ".querySelector('.btn').textContent == 'Stick again'; })()"),
+    ]),
     ('extras/select', 'the select opens, picks an option and closes', [
         (LIVE % 'Single select' + ".querySelector('.ts-control').click()",
          LIVE % 'Single select' + ".querySelector('.ts-dropdown')"

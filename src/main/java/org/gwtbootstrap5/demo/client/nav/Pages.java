@@ -84,6 +84,7 @@ public final class Pages {
         add(new Page(Section.HELPERS, "helpers/ratio", "Ratio"));
         add(new Page(Section.HELPERS, "helpers/stacks", "Stacks"));
         add(new Page(Section.HELPERS, "helpers/links", "Links and text"));
+        add(new Page(Section.HELPERS, "helpers/sticky", "Sticky"));
 
         add(new Page(Section.EXTRAS, "extras/animate", "Animate"));
         add(new Page(Section.EXTRAS, "extras/bootbox", "Bootbox"));

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+    <g:HTMLPanel>
+        <h1>Sticky</h1>
+        <p class="lead">Keep an element at the top or bottom of the viewport while the page scrolls: <code>StickyHelper</code>, or <code>sticky</code> on a <code>Div</code>. It replaces <code>Affix</code>, deprecated in 0.3.1.</p>
+        <d:Example ui:field="positions" heading="Top and bottom" description="`sticky` is `TOP`, `BOTTOM`, or one of them from a breakpoint up: `SM_TOP` … `XXL_BOTTOM`."/>
+        <d:Example ui:field="offset" heading="An offset, from Java" description="`StickyHelper.setSticky` takes a distance from the edge, and `removeSticky` undoes it."/>
+    </g:HTMLPanel>
+</ui:UiBinder>

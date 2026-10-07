@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ==========================LICENSE_START===============================
+  GwtBootstrap5
+  ======================================================================
+  Copyright (C) 2026 GwtBootstrap5
+  ======================================================================
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ==========================LICENSE_END=================================
+  -->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
+    <g:HTMLPanel>
+        <!-- A sticky element sticks within its parent and its scrolling container: this box -->
+        <b.html:Div addStyleNames="border rounded overflow-auto" height="200px">
+            <b.html:Div sticky="TOP" addStyleNames="bg-primary text-white px-3 py-2"><b.html:Span text="Sticks to the top"/></b.html:Div>
+            <b.html:Paragraph addStyleNames="px-3 pt-3">Scroll this box. The header stays at its top and the footer at its bottom while the text moves between them.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3">Bootstrap's sticky classes use the CSS <code>position: sticky</code>: the element scrolls with the page until it reaches the edge of the viewport, or of the closest box that scrolls, and stays there.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3">The element only sticks while its parent is on screen, so the parent must be taller than the element.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3">The breakpoint positions, such as <code>MD_TOP</code>, only stick from that width up: on a phone the element scrolls away.</b.html:Paragraph>
+            <b.html:Paragraph addStyleNames="px-3">Keep scrolling to the end of the box.</b.html:Paragraph>
+            <b.html:Div sticky="BOTTOM" addStyleNames="bg-body-tertiary border-top px-3 py-2"><b.html:Span text="Sticks to the bottom"/></b.html:Div>
+        </b.html:Div>
+    </g:HTMLPanel>
+</ui:UiBinder>
