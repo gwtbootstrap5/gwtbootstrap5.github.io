@@ -21,12 +21,15 @@
 
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
+             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
+             xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html">
     <g:HTMLPanel>
-        <h1>Bootbox</h1>
-        <p class="lead">Alert, confirm and prompt dialogs in one line, built on Bootstrap modals by <a href="https://bootboxjs.com/">Bootbox</a> 6. Inherit <code>org.gwtbootstrap5.extras.bootbox.Bootbox</code>.</p>
-        <d:Example ui:field="dialogs" heading="Alert, confirm and prompt" description="`Bootbox.alert`, `confirm` and `prompt` open a modal and call you back with the answer: nothing, a boolean or the text typed (`null` if cancelled)."/>
-        <d:Example ui:field="custom" heading="Custom dialogs" description="`DialogOptions` builds a dialog with a title, a size and your own buttons."/>
-        <d:Example ui:field="callbacks" heading="Show and hide callbacks" description="`Bootbox.init` runs a callback every time a Bootbox dialog is shown, `null` removes it. For a single dialog, the options take `setOnShow`, `setOnShown`, `setOnHide` and `setOnHidden`."/>
+        <b.html:Div addStyleNames="d-flex flex-wrap gap-2">
+            <b:Button ui:field="open" type="SECONDARY" text="Open an alert"/>
+            <b:Button ui:field="stop" type="SECONDARY_OUTLINE" text="Stop counting"/>
+        </b.html:Div>
+        <b.html:Paragraph ui:field="count" addStyleNames="mt-2 mb-0">Dialogs shown: 0</b.html:Paragraph>
+        <b.html:Paragraph ui:field="events" addStyleNames="mb-0">No callback yet.</b.html:Paragraph>
     </g:HTMLPanel>
 </ui:UiBinder>

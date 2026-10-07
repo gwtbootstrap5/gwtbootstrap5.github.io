@@ -176,6 +176,22 @@ BEHAVIOURS = [
          "!document.querySelector('.bootbox.modal') && !document.querySelector('.modal-backdrop')"
          " && " + LIVE % 'Alert, confirm and prompt' + ".textContent.includes('The alert was closed.')"),
     ]),
+    ('extras/bootbox', 'Bootbox.init counts every dialog shown until it is removed, and onShown / onHidden run', [
+        ("window.__count = parseInt(" + LIVE % 'Show and hide callbacks' + ".textContent.match(/Dialogs shown: (\\d+)/)[1]);"
+         + WATCH_SHOWN + LIVE % 'Show and hide callbacks' + ".querySelector('.btn').click()",
+         "window.__shown && document.querySelector('.bootbox.modal.show')"
+         " && " + LIVE % 'Show and hide callbacks' + ".textContent.includes('Dialogs shown: ' + (window.__count + 1))"
+         " && " + LIVE % 'Show and hide callbacks' + ".textContent.includes('onShown ran.')"),
+        ("document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
+         "!document.querySelector('.bootbox.modal')"
+         " && " + LIVE % 'Show and hide callbacks' + ".textContent.includes('onHidden ran.')"),
+        ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Stop counting').click();" % LIVE % 'Show and hide callbacks'
+         + WATCH_SHOWN + LIVE % 'Show and hide callbacks' + ".querySelector('.btn').click()",
+         "window.__shown && document.querySelector('.bootbox.modal.show')"
+         " && " + LIVE % 'Show and hide callbacks' + ".textContent.includes('Dialogs shown: ' + (window.__count + 1) + '. No longer counting.')"),
+        ("document.querySelector('.bootbox.modal.show .bootbox-accept').click()",
+         "!document.querySelector('.bootbox.modal') && !document.querySelector('.modal-backdrop')"),
+    ]),
     ('extras/summernote', 'the Summernote editor takes and gives its HTML', [
         ("[...%s.querySelectorAll('.btn')].find(b => b.textContent == 'Fill with sample text').click()" % (LIVE % 'Editor'),
          LIVE % 'Editor' + ".querySelector('.note-editor .note-editable')"

@@ -24,6 +24,7 @@ import org.gwtbootstrap5.client.ui.Button;
 import org.gwtbootstrap5.client.ui.html.Paragraph;
 import org.gwtbootstrap5.demo.client.ui.Example;
 import org.gwtbootstrap5.extras.bootbox.client.Bootbox;
+import org.gwtbootstrap5.extras.bootbox.client.options.AlertOptions;
 import org.gwtbootstrap5.extras.bootbox.client.options.BootboxSize;
 import org.gwtbootstrap5.extras.bootbox.client.options.DialogOptions;
 import org.gwtbootstrap5.extras.bootbox.client.options.PromptOptions;
@@ -54,12 +55,19 @@ public class BootboxPage extends Composite {
     interface CustomBinder extends UiBinder<Widget, PlanDialog> {
     }
 
+    @UiTemplate("bootbox/Callbacks.ui.xml")
+    interface CallbacksBinder extends UiBinder<Widget, Callbacks> {
+    }
+
     interface Sources extends ClientBundle {
         @Source("bootbox/Dialogs.ui.xml")
         TextResource dialogs();
 
         @Source("bootbox/Custom.ui.xml")
         TextResource custom();
+
+        @Source("bootbox/Callbacks.ui.xml")
+        TextResource callbacks();
 
         @Source("BootboxPage.java")
         TextResource java();
@@ -72,6 +80,8 @@ public class BootboxPage extends Composite {
     Example dialogs;
     @UiField
     Example custom;
+    @UiField
+    Example callbacks;
 
     public BootboxPage() {
         initWidget(BINDER.createAndBindUi(this));
@@ -83,6 +93,10 @@ public class BootboxPage extends Composite {
         custom.show(GWT.<CustomBinder>create(CustomBinder.class).createAndBindUi(customOwner), SOURCES.custom());
         customOwner.init();
         custom.addJava(SOURCES.java(), "custom");
+        final Callbacks callbacksOwner = new Callbacks();
+        callbacks.show(GWT.<CallbacksBinder>create(CallbacksBinder.class).createAndBindUi(callbacksOwner), SOURCES.callbacks());
+        callbacksOwner.init();
+        callbacks.addJava(SOURCES.java(), "callbacks");
     }
 
     static class Dialogs {
@@ -130,5 +144,35 @@ public class BootboxPage extends Composite {
             });
         }
         // [END custom]
+    }
+
+    static class Callbacks {
+        // [START callbacks]
+        @UiField
+        Button open;
+        @UiField
+        Button stop;
+        @UiField
+        Paragraph count;
+        @UiField
+        Paragraph events;
+
+        private int shown;
+
+        void init() {
+            // Runs for every Bootbox dialog shown from now on, from any example
+            Bootbox.init(() -> count.setText("Dialogs shown: " + ++shown));
+            stop.addClickHandler(event -> {
+                Bootbox.init(null);
+                count.setText("Dialogs shown: " + shown + ". No longer counting.");
+            });
+            open.addClickHandler(event -> {
+                final AlertOptions options = AlertOptions.newOptions("Close me to run onHidden.");
+                options.setOnShown(() -> events.setText("onShown ran."));
+                options.setOnHidden(() -> events.setText("onHidden ran."));
+                Bootbox.alert(options);
+            });
+        }
+        // [END callbacks]
     }
 }
