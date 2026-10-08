@@ -32,7 +32,7 @@
                 </button>
                 <a class="navbar-brand fw-semibold" href="#home">
                     <i class="bi bi-bootstrap-fill text-primary me-1"/>GwtBootstrap5
-                    <span class="badge text-bg-primary align-middle ms-1 fw-normal">0.3.1</span>
+                    <span class="badge text-bg-primary align-middle ms-1 fw-normal">0.4.0</span>
                 </a>
                 <ul class="navbar-nav flex-row ms-auto align-items-center gap-1">
                     <li class="nav-item">
