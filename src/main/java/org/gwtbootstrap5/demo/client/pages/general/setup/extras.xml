@@ -26,8 +26,13 @@
 <!-- In your .gwt.xml, one inherit per extra you use -->
 <inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
 
-<!-- Select and the date pickers also need their engine's script -->
+<!-- Select also needs its engine's script -->
 <inherits name="org.gwtbootstrap5.extras.select.Select"/>
 <inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
+
+<!-- The date pickers: one module per engine, with its code and its script. Only the engines you
+     inherit are compiled; with one, <dp:DatePicker/> needs no engine attribute.
+     Tempus Dominus: client.TempusDominusResources (or client.TempusDominusURL, from a CDN)
+     Air Datepicker: client.AirDatepickerResources (or client.AirDatepickerURL) -->
 <inherits name="org.gwtbootstrap5.extras.datetimepicker.DateTimePicker"/>
 <inherits name="org.gwtbootstrap5.extras.datetimepicker.client.TempusDominusResources"/>
