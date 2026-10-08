@@ -94,6 +94,13 @@ public class Example extends Composite {
     }
 
     /**
+     * Replaces the live example, keeping the code shown; for pages that recreate it.
+     */
+    public void setLive(final Widget example) {
+        live.setWidget(example);
+    }
+
+    /**
      * Adds a Java region ({@code // [START name]} ... {@code // [END name]}) to the code shown.
      */
     public void addJava(final TextResource javaFile, final String region) {

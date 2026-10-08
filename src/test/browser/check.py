@@ -164,15 +164,6 @@ BEHAVIOURS = [
          " && box.firstElementChild.getBoundingClientRect().bottom < box.getBoundingClientRect().top"
          " && " + LIVE % 'An offset, from Java' + ".querySelector('.btn').textContent == 'Stick again'; })()"),
     ]),
-    ('extras/select', 'the select opens, picks an option and closes', [
-        (LIVE % 'Single select' + ".querySelector('.ts-control').click()",
-         LIVE % 'Single select' + ".querySelector('.ts-dropdown')"
-         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown').style.display != 'none'"
-         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown [data-value=Spain]')"),
-        (LIVE % 'Single select' + ".querySelector('.ts-dropdown [data-value=Spain]').dispatchEvent(new MouseEvent('click', {bubbles: true}))",
-         LIVE % 'Single select' + ".textContent.includes('Selected: Spain.')"
-         " && " + LIVE % 'Single select' + ".querySelector('.ts-dropdown').style.display == 'none'"),
-    ]),
     ('extras/date-time-pickers', 'the Tempus Dominus picker opens, picks a day and closes', [
         (LIVE % 'Tempus Dominus' + ".querySelector('input').click()",
          "document.querySelector('.tempus-dominus-widget.show [data-action=selectDay]')"),
@@ -284,21 +275,6 @@ def check_behaviour(browser, check):
 
 def check_reattach(browser, check):
     """Select and the date pickers destroy their JavaScript widget when they leave the page."""
-    # Tom Select keeps its instance on the <select>; removed and added again, the select gets
-    # a new one with the same options and value
-    open_page(browser, 'extras/select')
-    live = EXAMPLE % 'Removed and added again'
-    state = ("const live = %s; const select = live.querySelector('select');"
-             "return [live.querySelectorAll('.ts-wrapper').length, !!select.tomselect,"
-             " select.tomselect && select.tomselect.getValue(),"
-             " select.tomselect && Object.keys(select.tomselect.options).length];" % live)
-    before = browser.js(state)
-    browser.js("%s.querySelector('button').click();" % live)
-    time.sleep(0.4)
-    after = browser.js(state)
-    check('extras/select: a select removed and added again has one Tom Select with its value',
-          before == [1, True, 'Medium', 3] and after == before, [before, after])
-
     # Removed and added again, each picker keeps its date
     open_page(browser, 'extras/date-time-pickers')
     live = EXAMPLE % 'Removed and added again'
@@ -322,14 +298,107 @@ def check_reattach(browser, check):
     check('extras/date-time-pickers: leaving the page destroys its Tempus Dominus widgets',
           first > 0 and left == 0 and again == first, [first, left, again])
 
-    # Tom Select's dropdown lives inside its wrapper: one wrapper per select, also after
-    # leaving the page and coming back
+
+# What each select engine draws, for the checks of the Select page. live is an example's
+# .demo-live; the dropdown of Slim Select is in <body>, found by the id it shares with the control.
+SELECT_JS = """
+window.__select = {
+  'Tom Select': {
+    control: live => live.querySelector('.ts-wrapper'),
+    open: live => live.querySelector('.ts-control').click(),
+    isOpen: live => !!live.querySelector('.ts-dropdown') && live.querySelector('.ts-dropdown').style.display != 'none',
+    option: (live, text) => [...live.querySelectorAll('.ts-dropdown .option')].find(o => o.textContent.trim().startsWith(text)),
+    pick: (live, text) => window.__select['Tom Select'].option(live, text).dispatchEvent(new MouseEvent('click', {bubbles: true})),
+    search: (live, text) => { const i = live.querySelector('.ts-dropdown input') || live.querySelector('.ts-control input'); i.focus(); i.value = text; i.dispatchEvent(new Event('input', {bubbles: true})); }
+  },
+  'Choices.js': {
+    control: live => live.querySelector('.choices'),
+    open: live => live.querySelector('.choices__inner').click(),
+    isOpen: live => !!live.querySelector('.choices__list--dropdown.is-active'),
+    option: (live, text) => [...live.querySelectorAll('.choices__list--dropdown [data-choice]')].find(o => o.textContent.trim().startsWith(text)),
+    pick: (live, text) => window.__select['Choices.js'].option(live, text).dispatchEvent(new MouseEvent('mousedown', {bubbles: true})),
+    search: (live, text) => { const i = live.querySelector('input.choices__input--cloned'); i.focus(); i.value = text; i.dispatchEvent(new Event('input', {bubbles: true})); i.dispatchEvent(new KeyboardEvent('keyup', {bubbles: true, key: text.slice(-1)})); }
+  },
+  'Slim Select': {
+    control: live => live.querySelector('.ss-main'),
+    content: live => document.querySelector('.ss-content[data-id="' + live.querySelector('.ss-main').dataset.id + '"]'),
+    open: live => live.querySelector('.ss-main').click(),
+    isOpen: live => window.__select['Slim Select'].content(live).classList.contains('ss-open'),
+    option: (live, text) => [...window.__select['Slim Select'].content(live).querySelectorAll('.ss-option:not(.ss-hide)')].find(o => o.textContent.trim().startsWith(text)),
+    pick: (live, text) => window.__select['Slim Select'].option(live, text).click(),
+    search: (live, text) => { const i = window.__select['Slim Select'].content(live).querySelector('.ss-search input'); i.focus(); i.value = text; i.dispatchEvent(new Event('input', {bubbles: true})); }
+  }
+};
+"""
+
+
+def check_select(browser, check):
+    """Every engine of the Select page opens, picks, loads remote options and survives a reattach."""
+    open_page(browser, 'extras/select')
+    for engine in ['Tom Select', 'Choices.js', 'Slim Select']:
+        browser.js(SELECT_JS)
+        browser.js("[...document.querySelectorAll('.demo-content .btn-group .btn')]"
+                   ".find(b => b.textContent == '%s').click();" % engine)
+        use = "const e = window.__select['%s']; " % engine
+        single = EXAMPLE % 'Single select'
+        multiple = EXAMPLE % 'Multiple select, with objects'
+        remote = EXAMPLE % 'Remote search'
+        reattach = EXAMPLE % 'Removed and added again'
+        drawn = browser.wait("(() => { %s return !!e.control(%s) && !!e.control(%s)"
+                             " && !!e.control(%s) && !!e.control(%s); })()" % (use, single, multiple, remote, reattach))
+        # Creating a select and giving it its options is not a change of its value
+        untouched = browser.js("return [%s.textContent.includes('Nothing selected.'),"
+                               " %s.textContent.includes('Nothing selected.')];" % (single, remote))
+        check('extras/select (%s): every example is drawn by the engine, with nothing selected' % engine,
+              drawn and untouched == [True, True], untouched)
+
+        steps = [
+            # Without asyncLoad, the search filters the options the select has, and still does once
+            # a load would have answered
+            ("%s window.__searched = 0; e.open(%s);"
+             " setTimeout(() => { e.search(%s, 'Sp'); window.__searched = Date.now(); }, 300)" % (use, single, single),
+             "(() => { %s return window.__searched && Date.now() - window.__searched > 1200 && e.isOpen(%s)"
+             " && !!e.option(%s, 'Spain') && !e.option(%s, 'Argentina'); })()" % (use, single, single, single)),
+            ("%s e.pick(%s, 'Spain')" % (use, single),
+             "(() => { %s return %s.textContent.includes('Selected: Spain.') && !e.isOpen(%s); })()"
+             % (use, single, single)),
+            ("%s e.open(%s)" % (use, multiple),
+             "(() => { %s return e.isOpen(%s) && !!e.option(%s, 'Ham'); })()" % (use, multiple, multiple)),
+            ("%s e.pick(%s, 'Ham')" % (use, multiple),
+             "%s.textContent.includes('1 toppings, 1.5')" % multiple),
+            ("%s e.open(%s); setTimeout(() => e.search(%s, 'par'), 300)" % (use, remote, remote),
+             "(() => { %s return !!e.option(%s, 'Paris'); })()" % (use, remote)),
+            ("%s e.pick(%s, 'Paris')" % (use, remote),
+             "%s.textContent.includes('Selected: Paris.')" % remote),
+        ]
+        failed = ''
+        for number, (action, condition) in enumerate(steps, 1):
+            browser.js(action)
+            if not browser.wait(condition, 10):
+                failed = 'step %d' % number
+                break
+        check('extras/select (%s): picks an option in the single, multiple and remote examples' % engine,
+              not failed, failed)
+        browser.js("document.body.click()")
+
+        # Removed and added again, the select gets a new instance with the same value
+        state = ("%s const live = %s; return [live.querySelectorAll('.ts-wrapper, .choices, .ss-main').length,"
+                 " live.querySelector('select').value];" % (use, reattach))
+        before = browser.js(state)
+        browser.js("%s.querySelector('button.btn:not(.dropdown-toggle)').click();" % reattach)
+        time.sleep(0.5)
+        after = browser.js(state)
+        check('extras/select (%s): a select removed and added again has one instance with its value' % engine,
+              before == [1, 'Medium'] and after == before, [before, after])
+
+    # Leaving the page destroys every instance, also the dropdowns Slim Select puts in <body>
     open_page(browser, 'general/setup')
+    left = browser.js("return document.querySelectorAll('.ts-wrapper, .choices, .ss-main, .ss-content').length")
     open_page(browser, 'extras/select')
     counts = browser.js("return [document.querySelectorAll('.demo-content select').length,"
                         " document.querySelectorAll('.ts-wrapper').length]")
-    check('extras/select: one Tom Select per select after coming back to the page',
-          counts[0] > 0 and counts[0] == counts[1], counts)
+    check('extras/select: leaving the page destroys the selects; one Tom Select per select when back',
+          left == 0 and counts[0] > 0 and counts[0] == counts[1], [left, counts])
 
 
 def main(base):
@@ -365,6 +434,7 @@ def main(base):
             check('%s: %d examples render with their code' % (token, len(examples)), loaded and not broken, broken or '')
         check_behaviour(browser, check)
         check_reattach(browser, check)
+        check_select(browser, check)
         errors = browser.js('return window.__errors')
         check('no JavaScript errors', errors == [], errors)
     finally:

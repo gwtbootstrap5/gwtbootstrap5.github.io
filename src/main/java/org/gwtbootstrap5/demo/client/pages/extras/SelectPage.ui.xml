@@ -21,12 +21,27 @@
 
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
              xmlns:d="urn:import:org.gwtbootstrap5.demo.client.ui">
     <g:HTMLPanel>
         <h1>Select</h1>
-        <p class="lead">Searchable single and multiple selects, by <a href="https://tom-select.js.org/">Tom Select</a> 2. Inherit <code>org.gwtbootstrap5.extras.select.Select</code> and <code>org.gwtbootstrap5.extras.select.client.TomSelectResources</code>.</p>
-        <d:Example ui:field="single" heading="Single select" description="`Select&lt;T&gt;` takes its options from Java with `setOptions`. Strings and enums work as they are; `placeholder` shows while nothing is selected and `searchEnabled` filters as you type."/>
-        <d:Example ui:field="multiple" heading="Multiple select, with objects" description="`MultipleSelect&lt;T&gt;` keeps a list of values. For objects, `setItemProvider` says which value and text each option has."/>
-        <d:Example ui:field="reattach" heading="Removed and added again" description="A select removed from the page destroys its Tom Select, and creates a new one when it is added again, keeping its options and value."/>
+        <p class="lead">Searchable single and multiple selects, drawn by one of three libraries:
+            <a href="https://tom-select.js.org/">Tom Select</a> 2, <a href="https://choices-js.github.io/Choices/">Choices.js</a> 11
+            or <a href="https://slimselectjs.com/">Slim Select</a> 4. Inherit <code>org.gwtbootstrap5.extras.select.Select</code> and the
+            module of the library: <code>org.gwtbootstrap5.extras.select.client.TomSelectResources</code>, <code>ChoicesResources</code>
+            or <code>SlimSelectResources</code> (or the <code>…URL</code> variant, which loads it from a CDN). Only the inherited
+            libraries are compiled; with a single one, <code>engine</code> can be left out.</p>
+        <div class="d-flex align-items-center gap-2 mb-4">
+            <span>Engine:</span>
+            <b:ButtonGroup>
+                <b:Button ui:field="tomSelect" text="Tom Select" type="PRIMARY_OUTLINE" active="true"/>
+                <b:Button ui:field="choices" text="Choices.js" type="PRIMARY_OUTLINE"/>
+                <b:Button ui:field="slimSelect" text="Slim Select" type="PRIMARY_OUTLINE"/>
+            </b:ButtonGroup>
+        </div>
+        <d:Example ui:field="single" heading="Single select" description="`Select&lt;T&gt;` takes its options from Java with `setOptions`. Strings and enums work as they are; `placeholder` shows while nothing is selected and the search box filters as you type."/>
+        <d:Example ui:field="multiple" heading="Multiple select, with objects" description="`MultipleSelect&lt;T&gt;` keeps a list of values, up to `setMultipleLimit`. For objects, `setItemProvider` says which value and text each option has."/>
+        <d:Example ui:field="remote" heading="Remote search" description="With `asyncLoad`, each search calls `asyncDataLoad`, which answers with the options found, for example from a server; `loadOnOpen` loads them on the first focus too."/>
+        <d:Example ui:field="reattach" heading="Removed and added again" description="A select removed from the page destroys its JavaScript select, and creates a new one when it is added again, keeping its options and value."/>
     </g:HTMLPanel>
 </ui:UiBinder>

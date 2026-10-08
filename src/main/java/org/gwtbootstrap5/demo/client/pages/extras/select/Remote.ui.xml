@@ -25,10 +25,9 @@
              xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html"
              xmlns:s="urn:import:org.gwtbootstrap5.extras.select.client.ui">
     <g:HTMLPanel>
-        <b:FormLabel text="Size"/>
-        <g:FlowPanel ui:field="holder">
-            <s:Select ui:field="size" placeholder="Pick a size"/>
-        </g:FlowPanel>
-        <b:Button ui:field="reattach" text="Remove and add again" addStyleNames="mt-2"/>
+        <b:FormLabel text="City"/>
+        <s:Select ui:field="city" placeholder="Search a city" asyncLoad="true" loadOnOpen="true"
+                  noResultsText="No city found"/>
+        <b.html:Paragraph ui:field="status" addStyleNames="mt-2 mb-0">Nothing selected.</b.html:Paragraph>
     </g:HTMLPanel>
 </ui:UiBinder>

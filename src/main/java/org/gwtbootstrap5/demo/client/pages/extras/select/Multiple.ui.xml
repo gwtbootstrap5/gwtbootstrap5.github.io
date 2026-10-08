@@ -22,12 +22,11 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
-             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
              xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html"
              xmlns:s="urn:import:org.gwtbootstrap5.extras.select.client.ui">
     <g:HTMLPanel>
         <b:FormLabel text="Toppings (up to three)"/>
-        <s:MultipleSelect ui:field="toppings" engine="TOMSELECT" placeholder="Pick toppings"/>
+        <s:MultipleSelect ui:field="toppings" placeholder="Pick toppings"/>
         <b.html:Paragraph ui:field="status" addStyleNames="mt-2 mb-0">No toppings.</b.html:Paragraph>
     </g:HTMLPanel>
 </ui:UiBinder>

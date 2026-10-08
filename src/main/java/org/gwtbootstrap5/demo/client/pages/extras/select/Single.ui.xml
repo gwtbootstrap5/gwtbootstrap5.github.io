@@ -22,12 +22,13 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:org.gwtbootstrap5.client.ui"
-             xmlns:b.gwt="urn:import:org.gwtbootstrap5.client.ui.gwt"
              xmlns:b.html="urn:import:org.gwtbootstrap5.client.ui.html"
              xmlns:s="urn:import:org.gwtbootstrap5.extras.select.client.ui">
+    <!-- engine="TOMSELECT", "CHOICESJS" or "SLIMSELECT" chooses the library; it can be left out when
+         the app inherits a single one. This page sets it from Java, with the buttons above. -->
     <g:HTMLPanel>
         <b:FormLabel text="Country"/>
-        <s:Select ui:field="country" engine="TOMSELECT" placeholder="Pick a country" searchEnabled="true"/>
+        <s:Select ui:field="country" placeholder="Pick a country" searchPlaceholder="Type a country"/>
         <b.html:Paragraph ui:field="status" addStyleNames="mt-2 mb-0">Nothing selected.</b.html:Paragraph>
     </g:HTMLPanel>
 </ui:UiBinder>

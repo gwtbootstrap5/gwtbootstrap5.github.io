@@ -26,7 +26,11 @@
 <!-- In your .gwt.xml, one inherit per extra you use -->
 <inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
 
-<!-- Select also needs its engine's script -->
+<!-- Select: one module per engine, with its code and its script. Only the engines you inherit are
+     compiled; with one, <s:Select/> needs no engine attribute.
+     Tom Select: client.TomSelectResources (or client.TomSelectURL, from a CDN)
+     Choices.js: client.ChoicesResources (or client.ChoicesURL)
+     Slim Select: client.SlimSelectResources (or client.SlimSelectURL) -->
 <inherits name="org.gwtbootstrap5.extras.select.Select"/>
 <inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
 

@@ -39,6 +39,8 @@
     <inherits name="org.gwtbootstrap5.extras.range.Range"/>
     <inherits name="org.gwtbootstrap5.extras.select.Select"/>
     <inherits name="org.gwtbootstrap5.extras.select.client.TomSelectResources"/>
+    <inherits name="org.gwtbootstrap5.extras.select.client.ChoicesResources"/>
+    <inherits name="org.gwtbootstrap5.extras.select.client.SlimSelectResources"/>
     <inherits name="org.gwtbootstrap5.extras.summernote.Summernote"/>
 
     <!-- One permutation: the demo targets current browsers only, and it keeps CI fast -->
